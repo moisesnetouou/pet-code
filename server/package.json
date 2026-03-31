@@ -1,0 +1,43 @@
+{
+  "name": "petcode-server",
+  "version": "1.0.0",
+  "description": "Backend do sistema PetCode - Gestão Veterinária",
+  "main": "src/server.ts",
+  "type": "module",
+  "scripts": {
+    "dev": "tsx watch src/server.ts",
+    "build": "tsc",
+    "start": "node dist/server.js",
+    "db:generate": "prisma generate",
+    "db:migrate": "prisma migrate dev",
+    "db:seed": "tsx prisma/seed.ts",
+    "lint": "biome lint .",
+    "format": "biome format --write ."
+  },
+  "keywords": [
+    "veterinary",
+    "petcare",
+    "clinic"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@fastify/cors": "^9.0.1",
+    "@fastify/jwt": "^8.0.1",
+    "@fastify/swagger": "^8.15.0",
+    "@prisma/client": "^6.4.1",
+    "@scalar/fastify-api-reference": "^1.35.0",
+    "bcryptjs": "^2.4.3",
+    "dotenv": "^16.4.7",
+    "fastify": "^4.28.1",
+    "zod": "^3.24.1"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^2.4.10",
+    "@types/bcryptjs": "^2.4.6",
+    "@types/node": "^22.13.1",
+    "prisma": "^6.4.1",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.3"
+  }
+}

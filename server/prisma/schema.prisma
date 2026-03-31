@@ -1,0 +1,162 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+enum Role {
+  SUPER_ADMIN
+  ADMIN
+  VETERINARIO
+  ATENDENTE
+  TUTOR
+}
+
+enum PetType {
+  CACHORRO
+  GATO
+  PASSARO
+  ROEDOR
+  REPTIL
+  OUTRO
+}
+
+model Clinic {
+  id        String   @id @default(uuid())
+  name      String
+  cnpj      String   @unique
+  phone     String?
+  email     String?
+  address   String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  users        User[]
+  pets         Pet[]
+  appointments Appointment[]
+}
+
+model User {
+  id           String   @id @default(uuid())
+  email        String   @unique
+  passwordHash String
+  name         String
+  role         Role     @default(ATENDENTE)
+  clinicId     String?
+  clinic       Clinic?  @relation(fields: [clinicId], references: [id])
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  pets         Pet[]
+  appointments Appointment[]
+}
+
+model Tutor {
+  id        String   @id @default(uuid())
+  name      String
+  cpf       String   @unique
+  phone     String
+  email     String?
+  address   String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  pets      Pet[]
+}
+
+model Pet {
+  id          String    @id @default(uuid())
+  name        String
+  type        PetType
+  breed       String?
+  birthDate   DateTime?
+  gender      String?
+  weight      Float?
+  color       String?
+  photoUrl    String?
+  notes       String?
+
+  clinicId    String
+  clinic      Clinic    @relation(fields: [clinicId], references: [id])
+
+  tutorId     String?
+  tutor       Tutor?    @relation(fields: [tutorId], references: [id])
+
+  tutorUserId String?
+  tutorUser   User?     @relation(fields: [tutorUserId], references: [id])
+
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+
+  appointments     Appointment[]
+  medicalRecords   MedicalRecord[]
+  prescriptions    Prescription[]
+}
+
+model Appointment {
+  id        String   @id @default(uuid())
+  dateTime  DateTime
+  status    String   @default("AGENDADO")
+  type      String
+  notes     String?
+
+  petId     String
+  pet       Pet      @relation(fields: [petId], references: [id])
+
+  clinicId  String
+  clinic    Clinic   @relation(fields: [clinicId], references: [id])
+
+  userId    String?
+  user      User?    @relation(fields: [userId], references: [id])
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model MedicalRecord {
+  id          String   @id @default(uuid())
+  description String
+  diagnosis   String?
+  notes       String?
+
+  petId       String
+  pet         Pet      @relation(fields: [petId], references: [id])
+
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  prescriptions Prescription[]
+}
+
+model Prescription {
+  id             String         @id @default(uuid())
+  medication     String
+  dosage         String
+  frequency      String
+  duration       String?
+  notes          String?
+
+  petId          String
+  pet            Pet            @relation(fields: [petId], references: [id])
+
+  medicalRecordId String?
+  medicalRecord  MedicalRecord? @relation(fields: [medicalRecordId], references: [id])
+
+  createdAt      DateTime       @default(now())
+  updatedAt      DateTime       @updatedAt
+}
+
+model Stock {
+  id          String   @id @default(uuid())
+  name        String
+  description String?
+  quantity    Int      @default(0)
+  unit        String?
+  minQuantity Int      @default(0)
+  clinicId    String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
