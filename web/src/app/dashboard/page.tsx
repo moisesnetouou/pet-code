@@ -35,8 +35,10 @@ export default function DashboardPage() {
             
             <StatsGrid />
             
-            <div className="grid grid-cols-1 xl:grid-cols-3 gap-6 mb-8">
-              <Timeline />
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
+              <div className="lg:col-span-2">
+                <Timeline />
+              </div>
               
               <div className="space-y-6">
                 <NextAppointment />

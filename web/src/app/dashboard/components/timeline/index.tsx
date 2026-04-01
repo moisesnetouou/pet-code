@@ -20,7 +20,7 @@ function TimelineItem({ appointment, onCheckIn, onCancel }: {
 
   return (
     <div className={t.item()}>
-      <div className="flex items-center gap-4">
+      <div className="flex items-center gap-4 min-w-0 w-full">
         <div className={t.itemTime()}>
           {appointment.time}
         </div>
@@ -29,49 +29,53 @@ function TimelineItem({ appointment, onCheckIn, onCancel }: {
           {appointment.pet.emoji}
         </div>
         
-        <div className={t.itemContent()}>
-          <p className={t.itemName()}>{appointment.petName}</p>
-          <p className={t.itemSubtitle()}>{appointment.pet.breed} • {appointment.tutor}</p>
-        </div>
-        
-        <Badge className={cn(t.itemBadge(), typeStyle.bg, typeStyle.text)}>
-          {appointment.type}
-        </Badge>
-        
-        <div className={t.itemActions()}>
-          {appointment.status === 'agendado' && (
-            <>
-              <Button 
-                size="sm"
-                className={t.confirmedButton()}
-                onClick={() => onCheckIn?.(appointment.id)}
-              >
-                <UserCheck className="w-3.5 h-3.5" />
-                Confirmar Chegada
-              </Button>
-              <Button 
-                size="sm"
-                variant="outline"
-                className={t.cancelButton()}
-                onClick={() => onCancel?.(appointment.id)}
-              >
-                <Trash2 className="w-3.5 h-3.5" />
-                Cancelar
-              </Button>
-            </>
-          )}
-          {appointment.status === 'confirmado' && (
-            <div className={t.confirmedBadge()}>
-              <Check className={t.confirmedBadgeIcon()} />
-              <span className={t.confirmedBadgeText()}>Chegada confirmada</span>
+        <div className="flex-1 min-w-0 flex items-center justify-between gap-4">
+          <div className={t.itemContent()}>
+            <p className={t.itemName()}>{appointment.petName}</p>
+            <p className={t.itemSubtitle()}>{appointment.pet.breed} • {appointment.tutor}</p>
+          </div>
+          
+          <div className="flex items-center gap-3 flex-shrink-0">
+            <Badge className={cn(t.itemBadge(), typeStyle.bg, typeStyle.text)}>
+              {appointment.type}
+            </Badge>
+            
+            <div className={t.itemActions()}>
+              {appointment.status === 'agendado' && (
+                <>
+                  <Button 
+                    size="sm"
+                    className={t.confirmedButton()}
+                    onClick={() => onCheckIn?.(appointment.id)}
+                  >
+                    <UserCheck className="w-3.5 h-3.5" />
+                    Confirmar Chegada
+                  </Button>
+                  <Button 
+                    size="sm"
+                    variant="outline"
+                    className={t.cancelButton()}
+                    onClick={() => onCancel?.(appointment.id)}
+                  >
+                    <Trash2 className="w-3.5 h-3.5" />
+                    Cancelar
+                  </Button>
+                </>
+              )}
+              {appointment.status === 'confirmado' && (
+                <div className={t.confirmedBadge()}>
+                  <Check className={t.confirmedBadgeIcon()} />
+                  <span className={t.confirmedBadgeText()}>Chegada confirmada</span>
+                </div>
+              )}
+              {appointment.status === 'cancelado' && (
+                <div className={t.canceledBadge()}>
+                  <Trash2 className={t.canceledBadgeIcon()} />
+                  <span className={t.canceledBadgeText()}>Cancelado</span>
+                </div>
+              )}
             </div>
-          )}
-          {appointment.status === 'cancelado' && (
-            <div className={t.canceledBadge()}>
-              <Trash2 className={t.canceledBadgeIcon()} />
-              <span className={t.canceledBadgeText()}>Cancelado</span>
-            </div>
-          )}
+          </div>
         </div>
       </div>
     </div>

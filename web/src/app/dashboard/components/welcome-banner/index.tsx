@@ -4,29 +4,33 @@ import { Card, CardContent } from '@/components/ui/card'
 import { welcomeBannerStyles } from './styles'
 import type { WelcomeBannerProps, StatBoxProps } from './types'
 import { appointments } from '../../data'
+import { cn } from '@/lib/utils'
 
 function StatBox({ value, label, variant = 'today' }: StatBoxProps) {
-  const w = welcomeBannerStyles()
+  const baseStyles = "px-5 py-3 rounded-xl border-2 min-w-[100px] text-center"
+  
   const variantStyles: Record<string, string> = {
-    today: w.statBoxToday(),
-    confirmed: w.statBoxConfirmed(),
-    waiting: w.statBoxWaiting(),
+    today: "bg-white border-teal-300",
+    confirmed: "bg-emerald-200 border-emerald-400",
+    waiting: "bg-amber-200 border-amber-400",
   }
+  
   const valueStyles: Record<string, string> = {
-    today: 'text-teal-700',
-    confirmed: 'text-emerald-700',
-    waiting: 'text-amber-700',
+    today: "text-teal-900",
+    confirmed: "text-emerald-900",
+    waiting: "text-amber-900",
   }
+  
   const labelStyles: Record<string, string> = {
-    today: 'text-teal-600',
-    confirmed: 'text-emerald-600',
-    waiting: 'text-amber-600',
+    today: "text-teal-700",
+    confirmed: "text-emerald-700",
+    waiting: "text-amber-700",
   }
 
   return (
-    <div className={variantStyles[variant]}>
-      <p className={w.statValue()}>{value}</p>
-      <p className={labelStyles[variant]}>{label}</p>
+    <div className={cn(baseStyles, variantStyles[variant])}>
+      <p className={cn(valueStyles[variant], "text-2xl font-bold")}>{value}</p>
+      <p className={cn(labelStyles[variant], "text-xs font-medium")}>{label}</p>
     </div>
   )
 }
