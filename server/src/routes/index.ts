@@ -4,6 +4,7 @@ import { authRoutes } from "./auth.js";
 import { clinicRoutes } from "./clinics.js";
 import { medicalRecordRoutes } from "./medical-records.js";
 import { petRoutes } from "./pets.js";
+import { stockRoutes } from "./stock.js";
 import { tutorRoutes } from "./tutors.js";
 
 export async function routes(fastify: FastifyInstance) {
@@ -13,4 +14,5 @@ export async function routes(fastify: FastifyInstance) {
   await fastify.register(tutorRoutes, { prefix: "/api" });
   await fastify.register(appointmentRoutes, { prefix: "/api" });
   await fastify.register(medicalRecordRoutes, { prefix: "/api" });
+  await fastify.register(stockRoutes, { prefix: "/api" });
 }

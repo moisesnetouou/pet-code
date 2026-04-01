@@ -5,7 +5,7 @@ import { petsGridStyles } from './styles'
 import type { PetsGridProps } from './types'
 import { PetCard } from '../pet-card'
 
-export function PetsGrid({ pets }: PetsGridProps) {
+export function PetsGrid({ pets, onEdit }: PetsGridProps) {
   const g = petsGridStyles()
 
   if (pets.length === 0) {
@@ -23,7 +23,7 @@ export function PetsGrid({ pets }: PetsGridProps) {
   return (
     <div className={g.container()}>
       {pets.map((pet) => (
-        <PetCard key={pet.id} pet={pet} />
+        <PetCard key={pet.id} pet={pet} onClick={onEdit} />
       ))}
     </div>
   )

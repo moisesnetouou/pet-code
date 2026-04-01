@@ -6,9 +6,10 @@ import { Sidebar } from '../dashboard/components/sidebar'
 import { Header } from '../dashboard/components/header'
 import { Filters } from './components/filters'
 import { TutorsGrid } from './components/tutors-grid'
+import { TutorDialog } from './components/tutor-dialog'
 import { greeting } from '../dashboard/utils/greeting'
 import { tutors as initialTutors } from './data'
-import type { FilterOptions } from './types'
+import type { FilterOptions, Tutor } from './types'
 import { cn } from '@/lib/utils'
 
 export default function TutorsPage() {
@@ -18,9 +19,12 @@ export default function TutorsPage() {
     status: 'all',
     sortBy: 'name',
   })
+  const [tutors, setTutors] = useState(initialTutors)
+  const [selectedTutor, setSelectedTutor] = useState<Tutor | null>(null)
+  const [dialogOpen, setDialogOpen] = useState(false)
 
   const filteredTutors = useMemo(() => {
-    let result = [...initialTutors]
+    let result = [...tutors]
 
     if (filters.search) {
       const search = filters.search.toLowerCase()
@@ -48,7 +52,34 @@ export default function TutorsPage() {
     }
 
     return result
-  }, [filters])
+  }, [tutors, filters])
+
+  const handleNewTutor = () => {
+    setSelectedTutor(null)
+    setDialogOpen(true)
+  }
+
+  const handleEditTutor = (tutor: Tutor) => {
+    setSelectedTutor(tutor)
+    setDialogOpen(true)
+  }
+
+  const handleSaveTutor = (tutorData: Omit<Tutor, 'id' | 'pets' | 'createdAt'>) => {
+    if (selectedTutor) {
+      setTutors(tutors.map(t => t.id === selectedTutor.id ? { ...t, ...tutorData, id: t.id } : t))
+    } else {
+      const newId = Math.max(...tutors.map(t => t.id), 0) + 1
+      setTutors([...tutors, { ...tutorData, id: newId, pets: [], createdAt: new Date().toLocaleDateString('pt-BR') } as Tutor])
+    }
+  }
+
+  const handleDeleteTutor = (id: number) => {
+    setTutors(tutors.filter(t => t.id !== id))
+  }
+
+  const handleSearch = (query: string) => {
+    setFilters(prev => ({ ...prev, search: query }))
+  }
 
   return (
     <div className="min-h-screen bg-slate-50">
@@ -63,6 +94,9 @@ export default function TutorsPage() {
           <Header
             greeting={`${greeting()}, Admin! 👋`}
             date="Terça-feira, 01 de Abril de 2026"
+            action1Label="Novo Tutor"
+            onAction1={handleNewTutor}
+            onSearch={handleSearch}
           />
 
           <div className="p-8">
@@ -76,7 +110,10 @@ export default function TutorsPage() {
                   Gerencie os tutores cadastrados na clínica
                 </p>
               </div>
-              <button className="flex items-center gap-2 px-4 py-2.5 bg-teal-500 hover:bg-teal-600 text-white font-medium rounded-xl transition-colors">
+              <button 
+                onClick={handleNewTutor}
+                className="flex items-center gap-2 px-4 py-2.5 bg-teal-500 hover:bg-teal-600 text-white font-medium rounded-xl transition-colors"
+              >
                 <Plus className="w-4 h-4" />
                 Novo Tutor
               </button>
@@ -88,10 +125,18 @@ export default function TutorsPage() {
               totalResults={filteredTutors.length}
             />
 
-            <TutorsGrid tutors={filteredTutors} />
+            <TutorsGrid tutors={filteredTutors} onEdit={handleEditTutor} />
           </div>
         </main>
       </div>
+
+      <TutorDialog
+        open={dialogOpen}
+        onOpenChange={setDialogOpen}
+        tutor={selectedTutor}
+        onSave={handleSaveTutor}
+        onDelete={handleDeleteTutor}
+      />
     </div>
   )
 }

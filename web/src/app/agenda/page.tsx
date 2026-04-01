@@ -21,6 +21,11 @@ export default function AgendaPage() {
   const [selectedEvent, setSelectedEvent] = useState<CalendarEvent | null>(null)
   const [dialogOpen, setDialogOpen] = useState(false)
 
+  const handleNewAppointment = () => {
+    setSelectedEvent(null)
+    setDialogOpen(true)
+  }
+
   const days = useMemo(() => {
     const year = currentDate.getFullYear()
     const month = currentDate.getMonth()
@@ -91,7 +96,11 @@ export default function AgendaPage() {
     <div className="min-h-screen bg-slate-50">
       <Sidebar open={sidebarOpen} onToggle={setSidebarOpen} />
       <div className={`transition-all duration-300 ${sidebarOpen ? 'ml-64' : 'ml-16'}`}>
-        <Header greeting={greeting()} />
+        <Header 
+          greeting={greeting()} 
+          action2Label="Novo Agendamento"
+          onAction2={handleNewAppointment} 
+        />
         <main className="p-6">
           <div className="bg-white rounded-xl border border-slate-200 p-6">
             <CalendarHeader

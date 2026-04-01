@@ -4,11 +4,11 @@ import { Phone, Mail, MapPin, PawPrint } from 'lucide-react'
 import { tutorCardStyles } from './styles'
 import type { TutorCardProps } from './types'
 
-export function TutorCard({ tutor }: TutorCardProps) {
+export function TutorCard({ tutor, onClick }: TutorCardProps) {
   const t = tutorCardStyles({ status: tutor.status })
 
   return (
-    <div className={t.container()}>
+    <div className={t.container()} onClick={() => onClick?.(tutor)}>
       <div className={t.header()}>
         <div className={t.avatarContainer()}>
           <span className={t.avatarInitials()}>

@@ -6,9 +6,11 @@ import { Sidebar } from '../dashboard/components/sidebar'
 import { Header } from '../dashboard/components/header'
 import { Filters } from './components/filters'
 import { PetsGrid } from './components/pets-grid'
+import { PetDialog } from './components/pet-dialog'
 import { greeting } from '../dashboard/utils/greeting'
 import { pets as initialPets } from './data'
-import type { FilterOptions } from './types'
+import { tutors as tutorData } from '../tutors/data'
+import type { FilterOptions, Pet } from './types'
 import { cn } from '@/lib/utils'
 
 export default function PetsPage() {
@@ -19,9 +21,16 @@ export default function PetsPage() {
     status: 'all',
     sortBy: 'name',
   })
+  const [pets, setPets] = useState(initialPets)
+  const [selectedPet, setSelectedPet] = useState<Pet | null>(null)
+  const [dialogOpen, setDialogOpen] = useState(false)
+
+  const tutors = useMemo(() => 
+    tutorData.map(t => ({ id: t.id, name: t.name })), 
+  [])
 
   const filteredPets = useMemo(() => {
-    let result = [...initialPets]
+    let result = [...pets]
 
     if (filters.search) {
       const search = filters.search.toLowerCase()
@@ -53,7 +62,34 @@ export default function PetsPage() {
     }
 
     return result
-  }, [filters])
+  }, [pets, filters])
+
+  const handleNewPet = () => {
+    setSelectedPet(null)
+    setDialogOpen(true)
+  }
+
+  const handleEditPet = (pet: Pet) => {
+    setSelectedPet(pet)
+    setDialogOpen(true)
+  }
+
+  const handleSavePet = (petData: Omit<Pet, 'id'>) => {
+    if (selectedPet) {
+      setPets(pets.map(p => p.id === selectedPet.id ? { ...p, ...petData, id: p.id } : p))
+    } else {
+      const newId = Math.max(...pets.map(p => p.id), 0) + 1
+      setPets([...pets, { ...petData, id: newId } as Pet])
+    }
+  }
+
+  const handleDeletePet = (id: number) => {
+    setPets(pets.filter(p => p.id !== id))
+  }
+
+  const handleSearch = (query: string) => {
+    setFilters(prev => ({ ...prev, search: query }))
+  }
 
   return (
     <div className="min-h-screen bg-slate-50">
@@ -68,6 +104,9 @@ export default function PetsPage() {
           <Header
             greeting={`${greeting()}, Admin! 👋`}
             date="Terça-feira, 01 de Abril de 2026"
+            action1Label="Novo Pet"
+            onAction1={handleNewPet}
+            onSearch={handleSearch}
           />
 
           <div className="p-8">
@@ -82,7 +121,10 @@ export default function PetsPage() {
                   Gerencie os pets cadastrados na clínica
                 </p>
               </div>
-              <button className="flex items-center gap-2 px-4 py-2.5 bg-teal-500 hover:bg-teal-600 text-white font-medium rounded-xl transition-colors">
+              <button 
+                onClick={handleNewPet}
+                className="flex items-center gap-2 px-4 py-2.5 bg-teal-500 hover:bg-teal-600 text-white font-medium rounded-xl transition-colors"
+              >
                 <Plus className="w-4 h-4" />
                 Novo Pet
               </button>
@@ -96,10 +138,19 @@ export default function PetsPage() {
             />
 
             {/* Pets Grid */}
-            <PetsGrid pets={filteredPets} />
+            <PetsGrid pets={filteredPets} onEdit={handleEditPet} />
           </div>
         </main>
       </div>
+
+      <PetDialog
+        open={dialogOpen}
+        onOpenChange={setDialogOpen}
+        pet={selectedPet}
+        onSave={handleSavePet}
+        onDelete={handleDeletePet}
+        tutors={tutors}
+      />
     </div>
   )
 }

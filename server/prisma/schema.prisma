@@ -149,14 +149,25 @@ model Prescription {
   updatedAt      DateTime       @updatedAt
 }
 
+enum StockType {
+  MEDICAMENTO
+  RACAO
+  BRINQUEDO
+  VACINA
+  MATERIAL
+  OUTRO
+}
+
 model Stock {
-  id          String   @id @default(uuid())
+  id          String    @id @default(uuid())
   name        String
   description String?
-  quantity    Int      @default(0)
+  imageUrl    String?
+  quantity    Int       @default(0)
   unit        String?
-  minQuantity Int      @default(0)
+  minQuantity Int       @default(0)
+  type        StockType @default(OUTRO)
   clinicId    String
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
 }

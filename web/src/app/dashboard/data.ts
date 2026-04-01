@@ -6,6 +6,7 @@ import {
   ClipboardList, 
   Building2, 
   Settings,
+  Package,
   PawPrint as PawIcon,
   Calendar as CalendarIcon,
   Stethoscope,
@@ -21,6 +22,7 @@ export const menuItems: MenuItem[] = [
   { icon: PawPrint, label: 'Pets', href: '/pets' },
   { icon: Users, label: 'Tutores', href: '/tutors' },
   { icon: ClipboardList, label: 'Prontuários', href: '/records' },
+  { icon: Package, label: 'Estoque', href: '/estoque' },
   { icon: Building2, label: 'Clínica', href: '/clinic' },
   { icon: Settings, label: 'Configurações', href: '/settings' },
 ]
