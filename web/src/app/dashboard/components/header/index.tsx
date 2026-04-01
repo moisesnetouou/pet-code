@@ -5,6 +5,7 @@ import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { headerStyles } from './styles'
 import type { HeaderProps } from './types'
+import { cn } from '@/lib/utils'
 
 export function Header({
   greeting = 'Admin! 👋',
@@ -34,11 +35,11 @@ export function Header({
           </div>
         )}
         
-        <Button variant="outline" className={h.actionButton()}>
+        <Button variant="outline" className={cn(h.actionButton(), "border-slate-300 text-slate-700 hover:bg-slate-100")}>
           <UserPlus className="w-4 h-4 text-slate-600" />
           <span className="hidden sm:inline">Novo Pet</span>
         </Button>
-        <Button className={h.actionButton()}>
+        <Button className={cn(h.actionButton(), "bg-teal-500 hover:bg-teal-600 text-white")}>
           <CalendarPlus className="w-4 h-4" />
           <span className="hidden sm:inline">Agendamento</span>
         </Button>

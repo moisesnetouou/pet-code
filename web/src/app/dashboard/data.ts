@@ -17,12 +17,12 @@ import type { MenuItem, Pet, Stat, QuickAction, Notification, Appointment } from
 
 export const menuItems: MenuItem[] = [
   { icon: LayoutDashboard, label: 'Painel', href: '/dashboard', active: true },
-  { icon: Calendar, label: 'Agenda', href: '/dashboard/agenda' },
-  { icon: PawPrint, label: 'Pets', href: '/dashboard/pets' },
-  { icon: Users, label: 'Tutores', href: '/dashboard/tutors' },
-  { icon: ClipboardList, label: 'Prontuários', href: '/dashboard/records' },
-  { icon: Building2, label: 'Clínica', href: '/dashboard/clinic' },
-  { icon: Settings, label: 'Configurações', href: '/dashboard/settings' },
+  { icon: Calendar, label: 'Agenda', href: '/agenda' },
+  { icon: PawPrint, label: 'Pets', href: '/pets' },
+  { icon: Users, label: 'Tutores', href: '/tutors' },
+  { icon: ClipboardList, label: 'Prontuários', href: '/records' },
+  { icon: Building2, label: 'Clínica', href: '/clinic' },
+  { icon: Settings, label: 'Configurações', href: '/settings' },
 ]
 
 export const pets: Pet[] = [

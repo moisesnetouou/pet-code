@@ -20,7 +20,8 @@ export default function DashboardPage() {
       <div className="flex">
         <Sidebar 
           open={sidebarOpen} 
-          onToggle={setSidebarOpen} 
+          onToggle={setSidebarOpen}
+          currentPath="/dashboard"
         />
         
         <main className={cn('flex-1 transition-all duration-300', sidebarOpen ? 'ml-64' : 'ml-20')}>

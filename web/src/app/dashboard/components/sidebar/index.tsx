@@ -15,6 +15,7 @@ interface SidebarWithStateProps extends SidebarProps {
 
 export function Sidebar({ 
   open = true,
+  currentPath = '/dashboard',
   onToggle,
   userName = 'Admin',
   userRole = 'Administrador',
@@ -33,19 +34,22 @@ export function Sidebar({
 
       <ScrollArea className={s.menuContainer()}>
         <nav className={s.nav()}>
-          {menuItems.map((item) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              className={cn(
-                s.navItem(),
-                item.active ? s.navItemActive() : s.navItemInactive()
-              )}
-            >
-              <item.icon className={cn('w-5 h-5', item.active && 'text-teal-600')} />
-              {open && <span className="font-medium">{item.label}</span>}
-            </Link>
-          ))}
+          {menuItems.map((item) => {
+            const isActive = currentPath === item.href || (item.href !== '/dashboard' && currentPath.startsWith(item.href))
+            return (
+              <Link
+                key={item.href}
+                href={item.href}
+                className={cn(
+                  s.navItem(),
+                  isActive ? s.navItemActive() : s.navItemInactive()
+                )}
+              >
+                <item.icon className={cn('w-5 h-5', isActive && 'text-teal-600')} />
+                {open && <span className="font-medium">{item.label}</span>}
+              </Link>
+            )
+          })}
         </nav>
       </ScrollArea>
 
