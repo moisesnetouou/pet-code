@@ -1,0 +1,41 @@
+import type { Clinic, Schedule, Service, Veterinarian } from './types'
+
+export const clinic: Clinic = {
+  id: 1,
+  name: 'PetCode Clínica Veterinária',
+  cnpj: '12.345.678/0001-90',
+  phone: '(11) 3456-7890',
+  email: 'contato@petcode.com.br',
+  address: 'Av. Paulista, 1000',
+  city: 'São Paulo',
+  state: 'SP',
+  cep: '01310-100',
+}
+
+export const schedules: Schedule[] = [
+  { id: 1, day: 'segunda', label: 'Segunda-feira', open: '08:00', close: '18:00', isClosed: false, is24h: false },
+  { id: 2, day: 'terca', label: 'Terça-feira', open: '08:00', close: '18:00', isClosed: false, is24h: false },
+  { id: 3, day: 'quarta', label: 'Quarta-feira', open: '08:00', close: '18:00', isClosed: false, is24h: false },
+  { id: 4, day: 'quinta', label: 'Quinta-feira', open: '08:00', close: '18:00', isClosed: false, is24h: false },
+  { id: 5, day: 'sexta', label: 'Sexta-feira', open: '08:00', close: '18:00', isClosed: false, is24h: false },
+  { id: 6, day: 'sabado', label: 'Sábado', open: '09:00', close: '14:00', isClosed: false, is24h: false },
+  { id: 7, day: 'domingo', label: 'Domingo', open: '', close: '', isClosed: true, is24h: false },
+]
+
+export const services: Service[] = [
+  { id: 1, name: 'Consulta', description: 'Consulta geral com veterinário', price: 150, duration: 30, isActive: true },
+  { id: 2, name: 'Vacinação', description: 'Aplicação de vacinas', price: 80, duration: 15, isActive: true },
+  { id: 3, name: 'Cirurgia', description: 'Procedimentos cirúrgicos', price: 800, duration: 120, isActive: true },
+  { id: 4, name: 'Exames Laboratoriais', description: 'Exames de sangue e urina', price: 120, duration: 20, isActive: true },
+  { id: 5, name: 'Raio-X', description: 'Exames de radiografia', price: 200, duration: 30, isActive: true },
+  { id: 6, name: 'Ultrassonografia', description: 'Exames ultrassonográficos', price: 300, duration: 45, isActive: true },
+  { id: 7, name: 'Banho e Tosa', description: 'Higiene e estética', price: 80, duration: 60, isActive: true },
+  { id: 8, name: 'Internação', description: 'Internação 24h', price: 300, duration: 1440, isActive: true },
+]
+
+export const veterinarians: Veterinarian[] = [
+  { id: 1, name: 'Dr. Carlos Silva', crmv: 'CRMV-SP 12345', specialties: ['Cirurgia', 'Ultrassonografia'], phone: '(11) 99999-0001', email: 'carlos@petcode.com.br', isActive: true },
+  { id: 2, name: 'Dra. Ana Paula', crmv: 'CRMV-SP 23456', specialties: ['Consulta', 'Vacinação'], phone: '(11) 99999-0002', email: 'ana@petcode.com.br', isActive: true },
+  { id: 3, name: 'Dr. Pedro Santos', crmv: 'CRMV-SP 34567', specialties: ['Exames', 'Laboratório'], phone: '(11) 99999-0003', email: 'pedro@petcode.com.br', isActive: true },
+  { id: 4, name: 'Dra. Julia Oliveira', crmv: 'CRMV-SP 45678', specialties: ['Dermatologia', 'Consulta'], phone: '(11) 99999-0004', email: 'julia@petcode.com.br', isActive: false },
+]

@@ -181,3 +181,76 @@ O projeto usa:
 - Tailwind CSS para estilos
 
 Execute `npm run lint` antes de commitar.
+
+## 11. Cores e Contraste
+
+Para garantir boa acessibilidade e visual, sempre use cores com contraste adequado.
+
+### Paleta de Cores para Botões
+
+| Uso | Background | Texto | Quando usar |
+|-----|------------|-------|-------------|
+| Primário | `bg-teal-500 hover:bg-teal-600` | `text-white` | Ações principais (Salvar, Confirmar) |
+| Secundário | `bg-slate-100 hover:bg-slate-200` | `text-slate-700 hover:text-slate-800` | Ações secundárias (Cancelar, Voltar) |
+| Perigo | `bg-red-500 hover:bg-red-600` | `text-white` | Ações destructive (Excluir) |
+| Outline | `border border-slate-200 hover:bg-slate-100` | `text-slate-700 hover:text-slate-800` | Alternativas a secundário |
+
+### Cores de Texto
+
+| Nível | Cor | Quando usar |
+|-------|-----|-------------|
+| Primário | `text-slate-800` ou `text-slate-900` | Títulos, nomes |
+| Secundário | `text-slate-700` | Texto de corpo |
+| Terciário | `text-slate-600` | Labels, textos auxiliares |
+| Quarto | `text-slate-500` | Placeholders, ícones |
+
+**Nunca use**:
+- `text-slate-400` ou mais claro para texto principal
+- `text-slate-500` para labels (use `text-slate-600` ou mais escuro)
+- Cores com sufixo `-50` para backgrounds de botões (use `-100`, `-200`)
+
+### Cores de Badges e Status
+
+| Status | Background | Texto |
+|--------|------------|-------|
+| Sucesso/Ativo | `bg-emerald-100` | `text-emerald-800` |
+| Alerta/Pendente | `bg-amber-100` | `text-amber-800` |
+| Erro/Inativo | `bg-red-100` | `text-red-800` |
+| Info | `bg-blue-100` | `text-blue-800` |
+
+### Inputs e Formulários
+
+| Elemento | Cor Recomendada | Evitar |
+|----------|-----------------|--------|
+| Input BG | `bg-white` | `bg-slate-50` (muito claro) |
+| Input text | `text-slate-800` | `text-slate-600` |
+| Input border | `border-slate-200` | `border-slate-100` |
+| Label | `text-slate-700` ou `text-slate-600` | `text-slate-500` |
+| Placeholder | `text-slate-400` | cores mais claras |
+
+### Exemplos de Uso
+
+```typescript
+// Botão primário
+<Button className="bg-teal-500 hover:bg-teal-600 text-white">
+  Salvar
+</Button>
+
+// Botão secundário
+<Button variant="outline" className="border-slate-200 text-slate-700 hover:bg-slate-100">
+  Cancelar
+</Button>
+
+// Badge de sucesso
+<span className="bg-emerald-100 text-emerald-800 px-3 py-1 rounded-full text-sm font-medium">
+  Ativo
+</span>
+
+// Label de formulário
+<label className="text-sm font-medium text-slate-700">
+  Nome
+</label>
+
+// Input
+<Input className="bg-white border-slate-200 text-slate-800 placeholder:text-slate-400" />
+```
