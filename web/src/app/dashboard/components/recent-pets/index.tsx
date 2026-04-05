@@ -1,20 +1,20 @@
-"use client"
+"use client";
 
-import { ArrowRight } from 'lucide-react'
-import { Card, CardContent } from '@/components/ui/card'
-import { Button } from '@/components/ui/button'
-import { recentPetsStyles } from './styles'
-import type { RecentPetsProps } from './types'
-import { pets as defaultPets } from '../../data'
-import { cn } from '@/lib/utils'
+import { ArrowRight } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
+import { cn } from "@/lib/utils";
+import { pets as defaultPets } from "../../data";
+import { recentPetsStyles } from "./styles";
+import type { RecentPetsProps } from "./types";
 
 export function RecentPets({
   pets: initialPets = defaultPets,
   limit = 8,
-  showViewAll = true
+  showViewAll = true,
 }: RecentPetsProps) {
-  const r = recentPetsStyles()
-  const pets = initialPets.slice(0, limit)
+  const r = recentPetsStyles();
+  const pets = initialPets.slice(0, limit);
 
   return (
     <Card className={r.container()}>
@@ -23,9 +23,7 @@ export function RecentPets({
         <div className={r.grid()}>
           {pets.map((pet) => (
             <div key={pet.id} className={r.petItem()}>
-              <div className={cn(r.petAvatar(), pet.color)}>
-                {pet.emoji}
-              </div>
+              <div className={cn(r.petAvatar(), pet.color)}>{pet.emoji}</div>
               <p className={r.petName()}>{pet.name}</p>
             </div>
           ))}
@@ -37,5 +35,5 @@ export function RecentPets({
         )}
       </CardContent>
     </Card>
-  )
+  );
 }

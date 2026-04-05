@@ -1,95 +1,103 @@
-"use client"
+"use client";
 
-import { useState, useMemo } from 'react'
-import { Plus, PawPrint } from 'lucide-react'
-import { Sidebar } from '../dashboard/components/sidebar'
-import { Header } from '../dashboard/components/header'
-import { Filters } from './components/filters'
-import { PetsGrid } from './components/pets-grid'
-import { PetDialog } from './components/pet-dialog'
-import { greeting } from '../dashboard/utils/greeting'
-import { pets as initialPets } from './data'
-import { tutors as tutorData } from '../tutors/data'
-import type { FilterOptions, Pet } from './types'
-import { cn } from '@/lib/utils'
+import { PawPrint, Plus } from "lucide-react";
+import { useMemo, useState } from "react";
+import { Button } from "@/components/base";
+import { cn } from "@/lib/utils";
+import { Header } from "../dashboard/components/header";
+import { Sidebar } from "../dashboard/components/sidebar";
+import { greeting } from "../dashboard/utils/greeting";
+import { tutors as tutorData } from "../tutors/data";
+import { Filters } from "./components/filters";
+import { PetDialog } from "./components/pet-dialog";
+import { PetsGrid } from "./components/pets-grid";
+import { pets as initialPets } from "./data";
+import type { FilterOptions, Pet } from "./types";
 
 export default function PetsPage() {
-  const [sidebarOpen, setSidebarOpen] = useState(true)
+  const [sidebarOpen, setSidebarOpen] = useState(true);
   const [filters, setFilters] = useState<FilterOptions>({
-    search: '',
-    type: 'all',
-    status: 'all',
-    sortBy: 'name',
-  })
-  const [pets, setPets] = useState(initialPets)
-  const [selectedPet, setSelectedPet] = useState<Pet | null>(null)
-  const [dialogOpen, setDialogOpen] = useState(false)
+    search: "",
+    type: "all",
+    status: "all",
+    sortBy: "name",
+  });
+  const [pets, setPets] = useState(initialPets);
+  const [selectedPet, setSelectedPet] = useState<Pet | null>(null);
+  const [dialogOpen, setDialogOpen] = useState(false);
 
-  const tutors = useMemo(() => 
-    tutorData.map(t => ({ id: t.id, name: t.name })), 
-  [])
+  const tutors = useMemo(
+    () => tutorData.map((t) => ({ id: t.id, name: t.name })),
+    [],
+  );
 
   const filteredPets = useMemo(() => {
-    let result = [...pets]
+    let result = [...pets];
 
     if (filters.search) {
-      const search = filters.search.toLowerCase()
+      const search = filters.search.toLowerCase();
       result = result.filter(
         (pet) =>
           pet.name.toLowerCase().includes(search) ||
-          pet.tutor.toLowerCase().includes(search)
-      )
+          pet.tutor.toLowerCase().includes(search),
+      );
     }
 
-    if (filters.type !== 'all') {
-      result = result.filter((pet) => pet.type === filters.type)
+    if (filters.type !== "all") {
+      result = result.filter((pet) => pet.type === filters.type);
     }
 
-    if (filters.status !== 'all') {
-      result = result.filter((pet) => pet.status === filters.status)
+    if (filters.status !== "all") {
+      result = result.filter((pet) => pet.status === filters.status);
     }
 
     switch (filters.sortBy) {
-      case 'name':
-        result.sort((a, b) => a.name.localeCompare(b.name))
-        break
-      case 'recent':
-        result.sort((a, b) => (b.lastVisit || '').localeCompare(a.lastVisit || ''))
-        break
-      case 'type':
-        result.sort((a, b) => a.type.localeCompare(b.type))
-        break
+      case "name":
+        result.sort((a, b) => a.name.localeCompare(b.name));
+        break;
+      case "recent":
+        result.sort((a, b) =>
+          (b.lastVisit || "").localeCompare(a.lastVisit || ""),
+        );
+        break;
+      case "type":
+        result.sort((a, b) => a.type.localeCompare(b.type));
+        break;
     }
 
-    return result
-  }, [pets, filters])
+    return result;
+  }, [pets, filters]);
 
   const handleNewPet = () => {
-    setSelectedPet(null)
-    setDialogOpen(true)
-  }
+    setSelectedPet(null);
+    setDialogOpen(true);
+  };
 
   const handleEditPet = (pet: Pet) => {
-    setSelectedPet(pet)
-    setDialogOpen(true)
-  }
+    setSelectedPet(pet);
+    setDialogOpen(true);
+  };
 
-  const handleSavePet = (petData: Omit<Pet, 'id'>) => {
+  const handleSavePet = (petData: Omit<Pet, "id">) => {
     if (selectedPet) {
-      setPets(pets.map(p => p.id === selectedPet.id ? { ...p, ...petData, id: p.id } : p))
+      setPets(
+        pets.map((p) =>
+          p.id === selectedPet.id ? { ...p, ...petData, id: p.id } : p,
+        ),
+      );
     } else {
-      const newId = Math.max(...pets.map(p => p.id), 0) + 1
-      setPets([...pets, { ...petData, id: newId } as Pet])
+      const newId = Math.max(...pets.map((p) => p.id), 0) + 1;
+      setPets([...pets, { ...petData, id: newId } as Pet]);
     }
-  }
+  };
 
   const handleDeletePet = (id: number) => {
-    setPets(pets.filter(p => p.id !== id))
-  }
+    setPets(pets.filter((p) => p.id !== id));
+  };
 
   const handleSearch = (query: string) => {
-    setFilters(prev => ({ ...prev, search: query }))
-  }
+    setFilters((prev) => ({ ...prev, search: query }));
+  };
 
   return (
     <div className="min-h-screen bg-slate-50">
@@ -100,7 +108,12 @@ export default function PetsPage() {
           currentPath="/pets"
         />
 
-        <main className={cn('flex-1 transition-all duration-300', sidebarOpen ? 'ml-64' : 'ml-20')}>
+        <main
+          className={cn(
+            "flex-1 transition-all duration-300",
+            sidebarOpen ? "ml-64" : "ml-20",
+          )}
+        >
           <Header
             greeting={`${greeting()}, Admin! 👋`}
             date="Terça-feira, 01 de Abril de 2026"
@@ -121,13 +134,10 @@ export default function PetsPage() {
                   Gerencie os pets cadastrados na clínica
                 </p>
               </div>
-              <button 
-                onClick={handleNewPet}
-                className="flex items-center gap-2 px-4 py-2.5 bg-teal-500 hover:bg-teal-600 text-white font-medium rounded-xl transition-colors"
-              >
+              <Button onClick={handleNewPet}>
                 <Plus className="w-4 h-4" />
                 Novo Pet
-              </button>
+              </Button>
             </div>
 
             {/* Filters */}
@@ -152,5 +162,5 @@ export default function PetsPage() {
         tutors={tutors}
       />
     </div>
-  )
+  );
 }

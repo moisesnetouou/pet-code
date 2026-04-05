@@ -1,8 +1,8 @@
-import type { Service } from '../../types'
+import type { Service } from "../../types";
 
-export type { Service }
+export type { Service };
 
 export interface ServicesProps {
-  services: Service[]
-  onToggle?: (id: number) => void
+  services: Service[];
+  onToggle?: (id: number) => void;
 }

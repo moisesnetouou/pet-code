@@ -1,22 +1,25 @@
-"use client"
+"use client";
 
-import { Phone, Mail, MapPin, PawPrint } from 'lucide-react'
-import { tutorCardStyles } from './styles'
-import type { TutorCardProps } from './types'
+import { Mail, MapPin, PawPrint, Phone } from "lucide-react";
+import { tutorCardStyles } from "./styles";
+import type { TutorCardProps } from "./types";
 
 export function TutorCard({ tutor, onClick }: TutorCardProps) {
-  const t = tutorCardStyles({ status: tutor.status })
+  const t = tutorCardStyles({ status: tutor.status });
 
   return (
     <div className={t.container()} onClick={() => onClick?.(tutor)}>
       <div className={t.header()}>
         <div className={t.avatarContainer()}>
           <span className={t.avatarInitials()}>
-            {tutor.name.split(' ').map(n => n[0]).join('')}
+            {tutor.name
+              .split(" ")
+              .map((n) => n[0])
+              .join("")}
           </span>
         </div>
         <span className={t.statusBadge()}>
-          {tutor.status === 'ativo' ? 'Ativo' : 'Inativo'}
+          {tutor.status === "ativo" ? "Ativo" : "Inativo"}
         </span>
       </div>
 
@@ -51,5 +54,5 @@ export function TutorCard({ tutor, onClick }: TutorCardProps) {
         </div>
       </div>
     </div>
-  )
+  );
 }

@@ -1,21 +1,19 @@
-"use client"
+"use client";
 
-import { Calendar, User, Weight } from 'lucide-react'
-import { petCardStyles } from './styles'
-import type { PetCardProps } from './types'
-import { cn } from '@/lib/utils'
+import { Calendar, User, Weight } from "lucide-react";
+import { cn } from "@/lib/utils";
+import { petCardStyles } from "./styles";
+import type { PetCardProps } from "./types";
 
 export function PetCard({ pet }: PetCardProps) {
-  const p = petCardStyles({ status: pet.status })
+  const p = petCardStyles({ status: pet.status });
 
   return (
     <div className={p.container()}>
       <div className={p.header()}>
-        <div className={cn(p.avatarContainer(), pet.color)}>
-          {pet.emoji}
-        </div>
+        <div className={cn(p.avatarContainer(), pet.color)}>{pet.emoji}</div>
         <span className={p.statusBadge()}>
-          {pet.status === 'ativo' ? 'Ativo' : 'Inativo'}
+          {pet.status === "ativo" ? "Ativo" : "Inativo"}
         </span>
       </div>
 
@@ -45,9 +43,11 @@ export function PetCard({ pet }: PetCardProps) {
       {pet.lastVisit && (
         <div className={p.infoRow()}>
           <Calendar className={p.infoIcon()} />
-          <span className="text-xs text-slate-600">Última visita: {pet.lastVisit}</span>
+          <span className="text-xs text-slate-600">
+            Última visita: {pet.lastVisit}
+          </span>
         </div>
       )}
     </div>
-  )
+  );
 }

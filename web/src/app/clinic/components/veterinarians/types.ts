@@ -1,8 +1,8 @@
-import type { Veterinarian } from '../../types'
+import type { Veterinarian } from "../../types";
 
-export type { Veterinarian }
+export type { Veterinarian };
 
 export interface VeterinariansProps {
-  veterinarians: Veterinarian[]
-  onToggle?: (id: number) => void
+  veterinarians: Veterinarian[];
+  onToggle?: (id: number) => void;
 }

@@ -1,20 +1,23 @@
-"use client"
+"use client";
 
-import { Card, CardContent } from '@/components/ui/card'
-import { quickActionsStyles } from './styles'
-import type { QuickActionsProps } from './types'
-import { quickActions as defaultActions } from '../../data'
-import { PawPrint, CalendarPlus, Users, ClipboardList } from 'lucide-react'
+import { CalendarPlus, ClipboardList, PawPrint, Users } from "lucide-react";
+import { Card, CardContent } from "@/components/ui/card";
+import { quickActions as defaultActions } from "../../data";
+import { quickActionsStyles } from "./styles";
+import type { QuickActionsProps } from "./types";
 
-const iconComponents: Record<string, React.ComponentType<{ className?: string }>> = {
+const iconComponents: Record<
+  string,
+  React.ComponentType<{ className?: string }>
+> = {
   pet: PawPrint,
   appointment: CalendarPlus,
   tutor: Users,
   record: ClipboardList,
-}
+};
 
 export function QuickActions({ actions = defaultActions }: QuickActionsProps) {
-  const q = quickActionsStyles()
+  const q = quickActionsStyles();
 
   return (
     <Card className={q.container()}>
@@ -22,12 +25,16 @@ export function QuickActions({ actions = defaultActions }: QuickActionsProps) {
         <h3 className={q.title()}>Ações rápidas</h3>
         <div className={q.grid()}>
           {actions.map((action) => {
-            const Icon = iconComponents[action.id] || PawPrint
-            const iconClass = action.id === 'pet' ? q.iconContainerBlue() 
-              : action.id === 'appointment' ? q.iconContainerViolet()
-              : action.id === 'tutor' ? q.iconContainerEmerald()
-              : q.iconContainerRose()
-            
+            const Icon = iconComponents[action.id] || PawPrint;
+            const iconClass =
+              action.id === "pet"
+                ? q.iconContainerBlue()
+                : action.id === "appointment"
+                  ? q.iconContainerViolet()
+                  : action.id === "tutor"
+                    ? q.iconContainerEmerald()
+                    : q.iconContainerRose();
+
             return (
               <button key={action.id} className={q.actionButton()}>
                 <div className={iconClass}>
@@ -36,10 +43,10 @@ export function QuickActions({ actions = defaultActions }: QuickActionsProps) {
                 <p className={q.label()}>{action.label}</p>
                 <p className={q.description()}>{action.description}</p>
               </button>
-            )
+            );
           })}
         </div>
       </CardContent>
     </Card>
-  )
+  );
 }

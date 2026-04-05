@@ -1,5 +1,5 @@
-import type { QuickAction } from '../../types'
+import type { QuickAction } from "../../types";
 
 export interface QuickActionsProps {
-  actions?: QuickAction[]
+  actions?: QuickAction[];
 }

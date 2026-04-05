@@ -1,69 +1,51 @@
-"use client"
+"use client";
 
-import { Search, ChevronDown } from 'lucide-react'
-import { filtersStyles } from './styles'
-import type { FiltersProps } from './types'
-import { recordTypes } from '../../data'
+import { FilterBar } from "@/components/base";
+import { recordTypes } from "../../data";
+import type { FiltersProps } from "./types";
 
 export function Filters({ options, onChange, totalResults = 0 }: FiltersProps) {
-  const f = filtersStyles()
-
   return (
-    <div className={f.container()}>
-      <div className={f.searchContainer()}>
-        <Search className={f.searchIcon()} />
-        <input
-          type="text"
-          placeholder="Buscar por pet ou tutor..."
-          value={options.search}
-          onChange={(e) => onChange({ ...options, search: e.target.value })}
-          className={f.searchInput()}
-        />
-      </div>
-
-      <div className={f.selectContainer()}>
-        <select
-          value={options.type}
-          onChange={(e) => onChange({ ...options, type: e.target.value as any })}
-          className={f.select()}
-        >
-          <option value="all">Todos os tipos</option>
-          {recordTypes.map((type) => (
-            <option key={type} value={type}>{type}</option>
-          ))}
-        </select>
-        <ChevronDown className={f.selectIcon()} />
-      </div>
-
-      <div className={f.selectContainer()}>
-        <select
-          value={options.status}
-          onChange={(e) => onChange({ ...options, status: e.target.value as any })}
-          className={f.select()}
-        >
-          <option value="all">Todos os status</option>
-          <option value="concluído">Concluído</option>
-          <option value="pendente">Pendente</option>
-        </select>
-        <ChevronDown className={f.selectIcon()} />
-      </div>
-
-      <div className={f.selectContainer()}>
-        <select
-          value={options.sortBy}
-          onChange={(e) => onChange({ ...options, sortBy: e.target.value as any })}
-          className={f.select()}
-        >
-          <option value="date">Mais recentes</option>
-          <option value="pet">Por pet</option>
-          <option value="type">Por tipo</option>
-        </select>
-        <ChevronDown className={f.selectIcon()} />
-      </div>
-
-      <p className={f.resultsInfo()}>
-        {totalResults} {totalResults === 1 ? 'prontuário encontrado' : 'prontuários encontrados'}
-      </p>
-    </div>
-  )
+    <FilterBar
+      searchPlaceholder="Buscar por pet ou tutor..."
+      searchValue={options.search}
+      onSearchChange={(value) => onChange({ ...options, search: value })}
+      filters={[
+        {
+          label: "Tipo",
+          options: [
+            { value: "all", label: "Todos os tipos" },
+            ...recordTypes.map((type) => ({ value: type, label: type })),
+          ],
+          value: options.type,
+          onChange: (value) =>
+            onChange({ ...options, type: value as typeof options.type }),
+        },
+        {
+          label: "Status",
+          options: [
+            { value: "all", label: "Todos os status" },
+            { value: "concluído", label: "Concluído" },
+            { value: "pendente", label: "Pendente" },
+          ],
+          value: options.status,
+          onChange: (value) =>
+            onChange({ ...options, status: value as typeof options.status }),
+        },
+      ]}
+      sortBy={{
+        label: "Ordenar",
+        options: [
+          { value: "date", label: "Mais recentes" },
+          { value: "pet", label: "Por pet" },
+          { value: "type", label: "Por tipo" },
+        ],
+        value: options.sortBy,
+        onChange: (value) =>
+          onChange({ ...options, sortBy: value as typeof options.sortBy }),
+      }}
+      totalResults={totalResults}
+      resultLabel="prontuário"
+    />
+  );
 }

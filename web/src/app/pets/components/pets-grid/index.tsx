@@ -1,12 +1,13 @@
-"use client"
+"use client";
 
-import { PawPrint } from 'lucide-react'
-import { petsGridStyles } from './styles'
-import type { PetsGridProps } from './types'
-import { PetCard } from '../pet-card'
+import { PawPrint } from "lucide-react";
+import { PetCard as BasePetCard } from "@/components/base";
+import type { Pet } from "../../types";
+import { petsGridStyles } from "./styles";
+import type { PetsGridProps } from "./types";
 
 export function PetsGrid({ pets, onEdit }: PetsGridProps) {
-  const g = petsGridStyles()
+  const g = petsGridStyles();
 
   if (pets.length === 0) {
     return (
@@ -17,14 +18,25 @@ export function PetsGrid({ pets, onEdit }: PetsGridProps) {
           Tente ajustar os filtros ou cadastrar um novo pet
         </p>
       </div>
-    )
+    );
   }
 
   return (
     <div className={g.container()}>
-      {pets.map((pet) => (
-        <PetCard key={pet.id} pet={pet} onClick={onEdit} />
+      {pets.map((pet: Pet) => (
+        <BasePetCard
+          key={pet.id}
+          name={pet.name}
+          breed={pet.breed}
+          age={pet.age}
+          weight={pet.weight}
+          tutor={pet.tutor}
+          status={pet.status}
+          lastVisit={pet.lastVisit}
+          emoji={pet.emoji}
+          onClick={() => onEdit?.(pet)}
+        />
       ))}
     </div>
-  )
+  );
 }

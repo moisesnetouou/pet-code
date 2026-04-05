@@ -1,5 +1,5 @@
-import type { MedicalRecord } from '../../types'
+import type { MedicalRecord } from "../../types";
 
 export interface RecordCardProps {
-  record: MedicalRecord
+  record: MedicalRecord;
 }

@@ -1,6 +1,6 @@
-import type { Tutor } from '../../types'
+import type { Tutor } from "../../types";
 
 export interface TutorCardProps {
-  tutor: Tutor
-  onClick?: (tutor: Tutor) => void
+  tutor: Tutor;
+  onClick?: (tutor: Tutor) => void;
 }

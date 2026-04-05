@@ -1,59 +1,59 @@
-"use client"
+"use client";
 
-import { useState, useMemo } from 'react'
-import { Plus, FileText } from 'lucide-react'
-import { Sidebar } from '../dashboard/components/sidebar'
-import { Header } from '../dashboard/components/header'
-import { Filters } from './components/filters'
-import { RecordsList } from './components/records-list'
-import { greeting } from '../dashboard/utils/greeting'
-import { records as initialRecords } from './data'
-import type { FilterOptions } from './types'
-import { cn } from '@/lib/utils'
+import { FileText, Plus } from "lucide-react";
+import { useMemo, useState } from "react";
+import { cn } from "@/lib/utils";
+import { Header } from "../dashboard/components/header";
+import { Sidebar } from "../dashboard/components/sidebar";
+import { greeting } from "../dashboard/utils/greeting";
+import { Filters } from "./components/filters";
+import { RecordsList } from "./components/records-list";
+import { records as initialRecords } from "./data";
+import type { FilterOptions } from "./types";
 
 export default function RecordsPage() {
-  const [sidebarOpen, setSidebarOpen] = useState(true)
+  const [sidebarOpen, setSidebarOpen] = useState(true);
   const [filters, setFilters] = useState<FilterOptions>({
-    search: '',
-    type: 'all',
-    status: 'all',
-    sortBy: 'date',
-  })
+    search: "",
+    type: "all",
+    status: "all",
+    sortBy: "date",
+  });
 
   const filteredRecords = useMemo(() => {
-    let result = [...initialRecords]
+    let result = [...initialRecords];
 
     if (filters.search) {
-      const search = filters.search.toLowerCase()
+      const search = filters.search.toLowerCase();
       result = result.filter(
         (record) =>
           record.petName.toLowerCase().includes(search) ||
-          record.tutor.toLowerCase().includes(search)
-      )
+          record.tutor.toLowerCase().includes(search),
+      );
     }
 
-    if (filters.type !== 'all') {
-      result = result.filter((record) => record.type === filters.type)
+    if (filters.type !== "all") {
+      result = result.filter((record) => record.type === filters.type);
     }
 
-    if (filters.status !== 'all') {
-      result = result.filter((record) => record.status === filters.status)
+    if (filters.status !== "all") {
+      result = result.filter((record) => record.status === filters.status);
     }
 
     switch (filters.sortBy) {
-      case 'date':
-        result.sort((a, b) => b.date.localeCompare(a.date))
-        break
-      case 'pet':
-        result.sort((a, b) => a.petName.localeCompare(b.petName))
-        break
-      case 'type':
-        result.sort((a, b) => a.type.localeCompare(b.type))
-        break
+      case "date":
+        result.sort((a, b) => b.date.localeCompare(a.date));
+        break;
+      case "pet":
+        result.sort((a, b) => a.petName.localeCompare(b.petName));
+        break;
+      case "type":
+        result.sort((a, b) => a.type.localeCompare(b.type));
+        break;
     }
 
-    return result
-  }, [filters])
+    return result;
+  }, [filters]);
 
   return (
     <div className="min-h-screen bg-slate-50">
@@ -64,7 +64,12 @@ export default function RecordsPage() {
           currentPath="/records"
         />
 
-        <main className={cn('flex-1 transition-all duration-300', sidebarOpen ? 'ml-64' : 'ml-20')}>
+        <main
+          className={cn(
+            "flex-1 transition-all duration-300",
+            sidebarOpen ? "ml-64" : "ml-20",
+          )}
+        >
           <Header
             greeting={`${greeting()}, Admin! 👋`}
             date="Terça-feira, 01 de Abril de 2026"
@@ -98,5 +103,5 @@ export default function RecordsPage() {
         </main>
       </div>
     </div>
-  )
+  );
 }

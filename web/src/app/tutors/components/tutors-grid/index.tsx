@@ -1,12 +1,12 @@
-"use client"
+"use client";
 
-import { Users } from 'lucide-react'
-import { tutorsGridStyles } from './styles'
-import type { TutorsGridProps } from './types'
-import { TutorCard } from '../tutor-card'
+import { Users } from "lucide-react";
+import { TutorCard } from "../tutor-card";
+import { tutorsGridStyles } from "./styles";
+import type { TutorsGridProps } from "./types";
 
 export function TutorsGrid({ tutors, onEdit }: TutorsGridProps) {
-  const g = tutorsGridStyles()
+  const g = tutorsGridStyles();
 
   if (tutors.length === 0) {
     return (
@@ -17,7 +17,7 @@ export function TutorsGrid({ tutors, onEdit }: TutorsGridProps) {
           Tente ajustar os filtros ou cadastrar um novo tutor
         </p>
       </div>
-    )
+    );
   }
 
   return (
@@ -26,5 +26,5 @@ export function TutorsGrid({ tutors, onEdit }: TutorsGridProps) {
         <TutorCard key={tutor.id} tutor={tutor} onClick={onEdit} />
       ))}
     </div>
-  )
+  );
 }

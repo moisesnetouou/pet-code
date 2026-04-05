@@ -1,18 +1,22 @@
-"use client"
+"use client";
 
-import { useState } from 'react'
-import { Settings } from 'lucide-react'
-import { Sidebar } from '../dashboard/components/sidebar'
-import { Header } from '../dashboard/components/header'
-import { Users } from './components/users'
-import { Preferences } from './components/preferences'
-import { About } from './components/about'
-import { greeting } from '../dashboard/utils/greeting'
-import { users as usersData, preferences as preferencesData, systemInfo as systemInfoData } from './data'
-import { cn } from '@/lib/utils'
+import { Settings } from "lucide-react";
+import { useState } from "react";
+import { cn } from "@/lib/utils";
+import { Header } from "../dashboard/components/header";
+import { Sidebar } from "../dashboard/components/sidebar";
+import { greeting } from "../dashboard/utils/greeting";
+import { About } from "./components/about";
+import { Preferences } from "./components/preferences";
+import { Users } from "./components/users";
+import {
+  preferences as preferencesData,
+  systemInfo as systemInfoData,
+  users as usersData,
+} from "./data";
 
 export default function SettingsPage() {
-  const [sidebarOpen, setSidebarOpen] = useState(true)
+  const [sidebarOpen, setSidebarOpen] = useState(true);
 
   return (
     <div className="min-h-screen bg-slate-50">
@@ -23,7 +27,12 @@ export default function SettingsPage() {
           currentPath="/settings"
         />
 
-        <main className={cn('flex-1 transition-all duration-300', sidebarOpen ? 'ml-64' : 'ml-20')}>
+        <main
+          className={cn(
+            "flex-1 transition-all duration-300",
+            sidebarOpen ? "ml-64" : "ml-20",
+          )}
+        >
           <Header
             greeting={`${greeting()}, Admin! 👋`}
             date="Terça-feira, 01 de Abril de 2026"
@@ -44,14 +53,14 @@ export default function SettingsPage() {
 
             <div className="space-y-6">
               <Users users={usersData} />
-              
+
               <Preferences preferences={preferencesData} />
-              
+
               <About info={systemInfoData} />
             </div>
           </div>
         </main>
       </div>
     </div>
-  )
+  );
 }

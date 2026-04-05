@@ -1,5 +1,5 @@
-import type { MedicalRecord } from '../../types'
+import type { MedicalRecord } from "../../types";
 
 export interface RecordsListProps {
-  records: MedicalRecord[]
+  records: MedicalRecord[];
 }

@@ -1,5 +1,5 @@
-import type { Stat } from '../../types'
+import type { Stat } from "../../types";
 
 export interface StatsGridProps {
-  stats?: Stat[]
+  stats?: Stat[];
 }

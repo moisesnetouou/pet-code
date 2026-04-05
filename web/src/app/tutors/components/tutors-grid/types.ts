@@ -1,6 +1,6 @@
-import type { Tutor } from '../../types'
+import type { Tutor } from "../../types";
 
 export interface TutorsGridProps {
-  tutors: Tutor[]
-  onEdit?: (tutor: Tutor) => void
+  tutors: Tutor[];
+  onEdit?: (tutor: Tutor) => void;
 }

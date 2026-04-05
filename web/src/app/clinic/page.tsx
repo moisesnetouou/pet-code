@@ -1,19 +1,24 @@
-"use client"
+"use client";
 
-import { useState } from 'react'
-import { Building2 } from 'lucide-react'
-import { Sidebar } from '../dashboard/components/sidebar'
-import { Header } from '../dashboard/components/header'
-import { ClinicInfo } from './components/clinic-info'
-import { Schedule } from './components/schedule'
-import { Services } from './components/services'
-import { Veterinarians } from './components/veterinarians'
-import { greeting } from '../dashboard/utils/greeting'
-import { clinic as clinicData, schedules as schedulesData, services as servicesData, veterinarians as veterinariansData } from './data'
-import { cn } from '@/lib/utils'
+import { Building2 } from "lucide-react";
+import { useState } from "react";
+import { cn } from "@/lib/utils";
+import { Header } from "../dashboard/components/header";
+import { Sidebar } from "../dashboard/components/sidebar";
+import { greeting } from "../dashboard/utils/greeting";
+import { ClinicInfo } from "./components/clinic-info";
+import { Schedule } from "./components/schedule";
+import { Services } from "./components/services";
+import { Veterinarians } from "./components/veterinarians";
+import {
+  clinic as clinicData,
+  schedules as schedulesData,
+  services as servicesData,
+  veterinarians as veterinariansData,
+} from "./data";
 
 export default function ClinicPage() {
-  const [sidebarOpen, setSidebarOpen] = useState(true)
+  const [sidebarOpen, setSidebarOpen] = useState(true);
 
   return (
     <div className="min-h-screen bg-slate-50">
@@ -24,7 +29,12 @@ export default function ClinicPage() {
           currentPath="/clinic"
         />
 
-        <main className={cn('flex-1 transition-all duration-300', sidebarOpen ? 'ml-64' : 'ml-20')}>
+        <main
+          className={cn(
+            "flex-1 transition-all duration-300",
+            sidebarOpen ? "ml-64" : "ml-20",
+          )}
+        >
           <Header
             greeting={`${greeting()}, Admin! 👋`}
             date="Terça-feira, 01 de Abril de 2026"
@@ -45,16 +55,16 @@ export default function ClinicPage() {
 
             <div className="space-y-6">
               <ClinicInfo clinic={clinicData} />
-              
+
               <Schedule schedules={schedulesData} />
-              
+
               <Services services={servicesData} />
-              
+
               <Veterinarians veterinarians={veterinariansData} />
             </div>
           </div>
         </main>
       </div>
     </div>
-  )
+  );
 }

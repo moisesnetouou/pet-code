@@ -1,44 +1,51 @@
-"use client"
+"use client";
 
-import { useState } from 'react'
-import { Stethoscope, Plus, Pencil } from 'lucide-react'
-import { Avatar, AvatarFallback } from '@/components/ui/avatar'
-import { Switch } from '@/components/ui/switch'
+import { Pencil, Plus, Stethoscope } from "lucide-react";
+import { useState } from "react";
+import { Avatar, AvatarFallback } from "@/components/ui/avatar";
+import { Button } from "@/components/ui/button";
 import {
   Dialog,
   DialogContent,
   DialogHeader,
   DialogTitle,
-} from '@/components/ui/dialog'
-import { Input } from '@/components/ui/input'
-import { Label } from '@/components/ui/label'
-import { Button } from '@/components/ui/button'
-import { veterinariansStyles } from './styles'
-import type { VeterinariansProps, Veterinarian } from './types'
+} from "@/components/ui/dialog";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Switch } from "@/components/ui/switch";
+import { veterinariansStyles } from "./styles";
+import type { Veterinarian, VeterinariansProps } from "./types";
 
-export function Veterinarians({ veterinarians: initialVeterinarians, onToggle }: VeterinariansProps) {
-  const v = veterinariansStyles()
-  const [veterinarians, setVeterinarians] = useState(initialVeterinarians)
-  const [showEditDialog, setShowEditDialog] = useState(false)
-  const [selectedVet, setSelectedVet] = useState<Veterinarian | null>(null)
+export function Veterinarians({
+  veterinarians: initialVeterinarians,
+  onToggle,
+}: VeterinariansProps) {
+  const v = veterinariansStyles();
+  const [veterinarians, setVeterinarians] = useState(initialVeterinarians);
+  const [showEditDialog, setShowEditDialog] = useState(false);
+  const [selectedVet, setSelectedVet] = useState<Veterinarian | null>(null);
 
   const handleToggle = (id: number) => {
-    setVeterinarians(prev => 
-      prev.map(vet => 
-        vet.id === id ? { ...vet, isActive: !vet.isActive } : vet
-      )
-    )
-    onToggle?.(id)
-  }
+    setVeterinarians((prev) =>
+      prev.map((vet) =>
+        vet.id === id ? { ...vet, isActive: !vet.isActive } : vet,
+      ),
+    );
+    onToggle?.(id);
+  };
 
   const handleEdit = (vet: Veterinarian) => {
-    setSelectedVet(vet)
-    setShowEditDialog(true)
-  }
+    setSelectedVet(vet);
+    setShowEditDialog(true);
+  };
 
   const getInitials = (name: string) => {
-    return name.split(' ').map(n => n[0]).join('').slice(0, 2)
-  }
+    return name
+      .split(" ")
+      .map((n) => n[0])
+      .join("")
+      .slice(0, 2);
+  };
 
   return (
     <>
@@ -66,8 +73,8 @@ export function Veterinarians({ veterinarians: initialVeterinarians, onToggle }:
                 <div className={v.vetInfo()}>
                   <div className="flex items-center gap-2 w-full">
                     <h4 className={v.vetName()}>{vet.name}</h4>
-                    <button 
-                      onClick={() => handleEdit(vet)} 
+                    <button
+                      onClick={() => handleEdit(vet)}
                       className="p-1.5 rounded-lg text-slate-400 hover:text-teal-600 hover:bg-teal-50 transition-colors"
                       title="Editar"
                     >
@@ -94,12 +101,14 @@ export function Veterinarians({ veterinarians: initialVeterinarians, onToggle }:
               <div className="flex items-center justify-between mt-3 pt-3 border-t border-slate-100">
                 <span className={v.vetStatus()}>
                   {vet.isActive ? (
-                    <span className="bg-emerald-100 text-emerald-800">Ativo</span>
+                    <span className="bg-emerald-100 text-emerald-800">
+                      Ativo
+                    </span>
                   ) : (
                     <span className="bg-slate-200 text-slate-600">Inativo</span>
                   )}
                 </span>
-                <Switch 
+                <Switch
                   checked={vet.isActive}
                   onCheckedChange={() => handleToggle(vet.id)}
                 />
@@ -114,36 +123,66 @@ export function Veterinarians({ veterinarians: initialVeterinarians, onToggle }:
           <DialogHeader>
             <DialogTitle>Editar Veterinário</DialogTitle>
           </DialogHeader>
-          
+
           {selectedVet && (
             <div className="space-y-4 mt-4">
               <div className="space-y-2">
-                <Label className="text-sm font-medium text-slate-700">Nome</Label>
-                <Input defaultValue={selectedVet.name} className="border-slate-200" />
+                <Label className="text-sm font-medium text-slate-700">
+                  Nome
+                </Label>
+                <Input
+                  defaultValue={selectedVet.name}
+                  className="border-slate-200"
+                />
               </div>
               <div className="space-y-2">
-                <Label className="text-sm font-medium text-slate-700">CRMV</Label>
-                <Input defaultValue={selectedVet.crmv} className="border-slate-200" />
+                <Label className="text-sm font-medium text-slate-700">
+                  CRMV
+                </Label>
+                <Input
+                  defaultValue={selectedVet.crmv}
+                  className="border-slate-200"
+                />
               </div>
               <div className="space-y-2">
-                <Label className="text-sm font-medium text-slate-700">Especialidades</Label>
-                <Input defaultValue={selectedVet.specialties.join(', ')} className="border-slate-200" placeholder="Cirurgia, Vacinação..." />
+                <Label className="text-sm font-medium text-slate-700">
+                  Especialidades
+                </Label>
+                <Input
+                  defaultValue={selectedVet.specialties.join(", ")}
+                  className="border-slate-200"
+                  placeholder="Cirurgia, Vacinação..."
+                />
               </div>
               <div className="grid grid-cols-2 gap-4">
                 <div className="space-y-2">
-                  <Label className="text-sm font-medium text-slate-700">Telefone</Label>
-                  <Input defaultValue={selectedVet.phone} className="border-slate-200" />
+                  <Label className="text-sm font-medium text-slate-700">
+                    Telefone
+                  </Label>
+                  <Input
+                    defaultValue={selectedVet.phone}
+                    className="border-slate-200"
+                  />
                 </div>
                 <div className="space-y-2">
-                  <Label className="text-sm font-medium text-slate-700">Email</Label>
-                  <Input defaultValue={selectedVet.email} className="border-slate-200" />
+                  <Label className="text-sm font-medium text-slate-700">
+                    Email
+                  </Label>
+                  <Input
+                    defaultValue={selectedVet.email}
+                    className="border-slate-200"
+                  />
                 </div>
               </div>
             </div>
           )}
 
           <div className="flex justify-end gap-3 mt-6">
-            <Button variant="outline" className="border-slate-200 text-slate-700 hover:bg-slate-100" onClick={() => setShowEditDialog(false)}>
+            <Button
+              variant="outline"
+              className="border-slate-200 text-slate-700 hover:bg-slate-100"
+              onClick={() => setShowEditDialog(false)}
+            >
               Cancelar
             </Button>
             <Button className="bg-teal-500 hover:bg-teal-600 text-white">
@@ -153,5 +192,5 @@ export function Veterinarians({ veterinarians: initialVeterinarians, onToggle }:
         </DialogContent>
       </Dialog>
     </>
-  )
+  );
 }

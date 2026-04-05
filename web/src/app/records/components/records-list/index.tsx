@@ -1,12 +1,12 @@
-"use client"
+"use client";
 
-import { FileText } from 'lucide-react'
-import { recordsListStyles } from './styles'
-import type { RecordsListProps } from './types'
-import { RecordCard } from '../record-card'
+import { FileText } from "lucide-react";
+import { RecordCard } from "../record-card";
+import { recordsListStyles } from "./styles";
+import type { RecordsListProps } from "./types";
 
 export function RecordsList({ records }: RecordsListProps) {
-  const r = recordsListStyles()
+  const r = recordsListStyles();
 
   if (records.length === 0) {
     return (
@@ -17,7 +17,7 @@ export function RecordsList({ records }: RecordsListProps) {
           Tente ajustar os filtros ou cadastrar um novo atendimento
         </p>
       </div>
-    )
+    );
   }
 
   return (
@@ -26,5 +26,5 @@ export function RecordsList({ records }: RecordsListProps) {
         <RecordCard key={record.id} record={record} />
       ))}
     </div>
-  )
+  );
 }

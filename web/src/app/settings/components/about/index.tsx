@@ -1,11 +1,11 @@
-"use client"
+"use client";
 
-import { Heart } from 'lucide-react'
-import { aboutStyles } from './styles'
-import type { AboutProps } from './types'
+import { Heart } from "lucide-react";
+import { aboutStyles } from "./styles";
+import type { AboutProps } from "./types";
 
 export function About({ info }: AboutProps) {
-  const a = aboutStyles()
+  const a = aboutStyles();
 
   return (
     <div className={a.container()}>
@@ -39,10 +39,8 @@ export function About({ info }: AboutProps) {
         <p className={a.footerText()}>
           PetCode - Sistema de Gestão Clínica Veterinária
         </p>
-        <p className={a.footerText()}>
-          Feito com ❤️ para cuidar dos seus pets
-        </p>
+        <p className={a.footerText()}>Feito com ❤️ para cuidar dos seus pets</p>
       </div>
     </div>
-  )
+  );
 }

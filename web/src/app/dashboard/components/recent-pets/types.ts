@@ -1,7 +1,7 @@
-import type { Pet } from '../../types'
+import type { Pet } from "../../types";
 
 export interface RecentPetsProps {
-  pets?: Pet[]
-  limit?: number
-  showViewAll?: boolean
+  pets?: Pet[];
+  limit?: number;
+  showViewAll?: boolean;
 }

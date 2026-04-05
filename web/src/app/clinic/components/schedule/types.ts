@@ -1,7 +1,7 @@
-import type { Schedule } from '../../types'
+import type { Schedule } from "../../types";
 
-export type { Schedule }
+export type { Schedule };
 
 export interface ScheduleProps {
-  schedules: Schedule[]
+  schedules: Schedule[];
 }

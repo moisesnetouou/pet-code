@@ -1,12 +1,12 @@
-"use client"
+"use client";
 
-import { Card, CardContent } from '@/components/ui/card'
-import { statsGridStyles } from './styles'
-import type { StatsGridProps } from './types'
-import { stats } from '../../data'
+import { Card, CardContent } from "@/components/ui/card";
+import { stats } from "../../data";
+import { statsGridStyles } from "./styles";
+import type { StatsGridProps } from "./types";
 
 export function StatsGrid({ stats: statsData = stats }: StatsGridProps) {
-  const s = statsGridStyles()
+  const s = statsGridStyles();
 
   return (
     <div className={s.container()}>
@@ -21,5 +21,5 @@ export function StatsGrid({ stats: statsData = stats }: StatsGridProps) {
         </Card>
       ))}
     </div>
-  )
+  );
 }
