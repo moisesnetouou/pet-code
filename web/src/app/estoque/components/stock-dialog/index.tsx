@@ -240,14 +240,12 @@ export function StockDialog({
             type="button"
             variant="outline"
             onClick={() => onOpenChange(false)}
-            className="border-slate-200 text-slate-700 hover:bg-slate-100"
           >
             Cancelar
           </Button>
           <Button
             type="button"
             onClick={handleSubmit}
-            className="bg-teal-500 hover:bg-teal-600 text-white"
           >
             Salvar
           </Button>

@@ -92,11 +92,11 @@ export function ClinicInfo({ clinic: initialClinic }: ClinicInfoProps) {
               <Label className="text-sm font-medium text-slate-700">
                 Nome da Clínica
               </Label>
-              <Input defaultValue={clinic.name} className="border-slate-200" />
+              <Input defaultValue={clinic.name} />
             </div>
             <div className="space-y-2">
               <Label className="text-sm font-medium text-slate-700">CNPJ</Label>
-              <Input defaultValue={clinic.cnpj} className="border-slate-200" />
+              <Input defaultValue={clinic.cnpj} />
             </div>
             <div className="grid grid-cols-2 gap-4">
               <div className="space-y-2">
@@ -105,21 +105,20 @@ export function ClinicInfo({ clinic: initialClinic }: ClinicInfoProps) {
                 </Label>
                 <Input
                   defaultValue={clinic.phone}
-                  className="border-slate-200"
                 />
               </div>
               <div className="space-y-2">
                 <Label className="text-sm font-medium text-slate-700">
                   CEP
                 </Label>
-                <Input defaultValue={clinic.cep} className="border-slate-200" />
+                <Input defaultValue={clinic.cep} />
               </div>
             </div>
             <div className="space-y-2">
               <Label className="text-sm font-medium text-slate-700">
                 Email
               </Label>
-              <Input defaultValue={clinic.email} className="border-slate-200" />
+              <Input defaultValue={clinic.email} />
             </div>
             <div className="space-y-2">
               <Label className="text-sm font-medium text-slate-700">
@@ -127,7 +126,6 @@ export function ClinicInfo({ clinic: initialClinic }: ClinicInfoProps) {
               </Label>
               <Input
                 defaultValue={clinic.address}
-                className="border-slate-200"
               />
             </div>
             <div className="grid grid-cols-2 gap-4">
@@ -137,7 +135,6 @@ export function ClinicInfo({ clinic: initialClinic }: ClinicInfoProps) {
                 </Label>
                 <Input
                   defaultValue={clinic.city}
-                  className="border-slate-200"
                 />
               </div>
               <div className="space-y-2">
@@ -146,24 +143,16 @@ export function ClinicInfo({ clinic: initialClinic }: ClinicInfoProps) {
                 </Label>
                 <Input
                   defaultValue={clinic.state}
-                  className="border-slate-200"
                 />
               </div>
             </div>
           </div>
 
           <div className="flex justify-end gap-3 mt-6">
-            <Button
-              variant="outline"
-              className="border-slate-200 text-slate-700 hover:bg-slate-100"
-              onClick={() => setShowEditDialog(false)}
-            >
+            <Button variant="outline" onClick={() => setShowEditDialog(false)}>
               Cancelar
             </Button>
-            <Button
-              className="bg-teal-500 hover:bg-teal-600 text-white"
-              onClick={handleSave}
-            >
+            <Button onClick={handleSave}>
               Salvar
             </Button>
           </div>

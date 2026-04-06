@@ -230,17 +230,10 @@ export function RecordCard({ record }: RecordCardProps) {
           </div>
 
           <div className="flex justify-end gap-3 mt-6">
-            <Button
-              variant="outline"
-              className="border-slate-200 text-slate-700 hover:bg-slate-100"
-              onClick={() => setShowDetails(false)}
-            >
+            <Button variant="outline" className="border-slate-200 text-slate-700 hover:bg-slate-100" onClick={() => setShowDetails(false)}>
               Fechar
             </Button>
-            <Button
-              className="bg-teal-500 hover:bg-teal-600 text-white"
-              onClick={handleEdit}
-            >
+            <Button onClick={handleEdit}>
               <Pencil className="w-4 h-4 mr-2" />
               Editar Prontuário
             </Button>

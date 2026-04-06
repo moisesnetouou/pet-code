@@ -178,14 +178,10 @@ export function Veterinarians({
           )}
 
           <div className="flex justify-end gap-3 mt-6">
-            <Button
-              variant="outline"
-              className="border-slate-200 text-slate-700 hover:bg-slate-100"
-              onClick={() => setShowEditDialog(false)}
-            >
+            <Button variant="outline" onClick={() => setShowEditDialog(false)}>
               Cancelar
             </Button>
-            <Button className="bg-teal-500 hover:bg-teal-600 text-white">
+            <Button>
               Salvar
             </Button>
           </div>

@@ -169,7 +169,6 @@ export function Users({ users: initialUsers }: UsersProps) {
                 </Label>
                 <Input
                   defaultValue={selectedUser.name}
-                  className="border-slate-200"
                 />
               </div>
               <div className="space-y-2">
@@ -178,7 +177,6 @@ export function Users({ users: initialUsers }: UsersProps) {
                 </Label>
                 <Input
                   defaultValue={selectedUser.email}
-                  className="border-slate-200"
                 />
               </div>
               <div className="space-y-2">
@@ -199,14 +197,10 @@ export function Users({ users: initialUsers }: UsersProps) {
           )}
 
           <div className="flex justify-end gap-3 mt-6">
-            <Button
-              variant="outline"
-              className="border-slate-200 text-slate-700 hover:bg-slate-100"
-              onClick={() => setShowEditDialog(false)}
-            >
+            <Button variant="outline" onClick={() => setShowEditDialog(false)}>
               Cancelar
             </Button>
-            <Button className="bg-teal-500 hover:bg-teal-600 text-white">
+            <Button>
               Salvar
             </Button>
           </div>
@@ -223,7 +217,7 @@ export function Users({ users: initialUsers }: UsersProps) {
           <div className="space-y-4 mt-4">
             <div className="space-y-2">
               <Label className="text-sm font-medium text-slate-700">Nome</Label>
-              <Input placeholder="Nome completo" className="border-slate-200" />
+              <Input placeholder="Nome completo" />
             </div>
             <div className="space-y-2">
               <Label className="text-sm font-medium text-slate-700">
@@ -232,7 +226,6 @@ export function Users({ users: initialUsers }: UsersProps) {
               <Input
                 type="email"
                 placeholder="email@exemplo.com"
-                className="border-slate-200"
               />
             </div>
             <div className="space-y-2">
@@ -242,7 +235,6 @@ export function Users({ users: initialUsers }: UsersProps) {
               <Input
                 type="password"
                 placeholder="••••••••"
-                className="border-slate-200"
               />
             </div>
             <div className="space-y-2">
@@ -262,14 +254,10 @@ export function Users({ users: initialUsers }: UsersProps) {
           </div>
 
           <div className="flex justify-end gap-3 mt-6">
-            <Button
-              variant="outline"
-              className="border-slate-200 text-slate-700 hover:bg-slate-100"
-              onClick={() => setShowAddDialog(false)}
-            >
+            <Button variant="outline" onClick={() => setShowAddDialog(false)}>
               Cancelar
             </Button>
-            <Button className="bg-teal-500 hover:bg-teal-600 text-white">
+            <Button>
               Criar Usuário
             </Button>
           </div>
