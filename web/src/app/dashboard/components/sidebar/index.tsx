@@ -3,7 +3,7 @@
 import { ChevronLeft, Heart } from "lucide-react";
 import Link from "next/link";
 import { Avatar } from "@/components/base/avatar";
-import { ScrollArea } from "@/components/ui/scroll-area";
+import { ScrollArea } from "@/components/base/scroll-area";
 import { cn } from "@/lib/utils";
 import { menuItems } from "../../data";
 import { sidebarStyles } from "./styles";

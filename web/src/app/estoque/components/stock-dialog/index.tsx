@@ -11,7 +11,7 @@ import {
   DialogFooter,
   DialogHeader,
   DialogTitle,
-} from "@/components/ui/dialog";
+} from "@/components/base/dialog";
 import type { StockItem, StockType } from "../../types";
 import { stockTypeLabels } from "../../types";
 import { stockDialogStyles } from "./styles";

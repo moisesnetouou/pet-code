@@ -3,16 +3,18 @@ import { tv } from "tailwind-variants";
 export const checkboxStyles = tv({
   slots: {
     container: "flex items-center gap-2",
-    input: "w-4 h-4 rounded border transition-colors cursor-pointer",
+    wrapper: "relative flex items-center justify-center",
+    input: "w-4 h-4 rounded border transition-colors cursor-pointer appearance-none bg-none",
     label: "text-sm text-slate-700 cursor-pointer",
   },
   variants: {
     checked: {
       true: {
-        input: "bg-teal-500 border-teal-500 text-white",
+        wrapper: "inset-0",
+        input: "bg-teal-500! border-teal-500! text-white",
       },
       false: {
-        input: "border-slate-300 bg-white",
+        input: "border-teal-300 bg-white",
       },
     },
     disabled: {
@@ -26,18 +28,11 @@ export const checkboxStyles = tv({
         input: "border-red-500",
       },
     },
-    state: {
-      default: {},
-      focus: {
-        input: "ring-2 ring-teal-500/20",
-      },
-    },
   },
   defaultVariants: {
     checked: false,
     disabled: false,
     error: false,
-    state: "default",
   },
 });
 

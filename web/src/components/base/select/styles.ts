@@ -5,7 +5,7 @@ export const selectStyles = tv({
   slots: {
     label: "text-sm font-medium text-slate-700 mb-1.5",
     trigger:
-      "flex h-10 w-full items-center text-slate-400 justify-between rounded-xl bg-white px-4 py-2 text-sm border border-slate-200 transition-all hover:border-slate-300 focus:outline-none focus:ring-2 focus:ring-teal-500/20 focus:border-teal-500 disabled:bg-slate-100 disabled:border-slate-200 disabled:opacity-50 disabled:cursor-not-allowed",
+      "flex h-10 w-full items-center text-slate-400 justify-between rounded-xl bg-white px-4 py-2 text-sm border border-teal-300 transition-all cursor-pointer hover:border-teal-400 focus:outline-none focus:outline-2 focus:outline-teal-500 disabled:bg-slate-100 disabled:border-slate-200 disabled:opacity-50 disabled:cursor-not-allowed",
     content:
       "relative z-50 max-h-96 min-w-[8rem] overflow-hidden rounded-xl border border-slate-200 bg-white p-1 shadow-lg data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2",
     viewport: "p-1",
@@ -21,19 +21,19 @@ export const selectStyles = tv({
   variants: {
     state: {
       default: {
-        trigger: "border-slate-200",
+        trigger: "border-teal-300 hover:border-teal-400",
       },
       focus: {
-        trigger: "border-teal-500 ring-2 ring-teal-500/20",
+        trigger: "border-teal-500 outline-2 outline-teal-500",
       },
       open: {
-        trigger: "border-teal-500 ring-2 ring-teal-500/20",
+        trigger: "border-teal-500 outline-2 outline-teal-500",
       },
       disabled: {
         trigger: "bg-slate-100 border-slate-200 opacity-50",
       },
       error: {
-        trigger: "border-red-500 ring-2 ring-red-500/20",
+        trigger: "border-red-500 outline-2 outline-red-500",
       },
     },
     size: {

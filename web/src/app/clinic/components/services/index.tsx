@@ -11,7 +11,7 @@ import {
   DialogContent,
   DialogHeader,
   DialogTitle,
-} from "@/components/ui/dialog";
+} from "@/components/base/dialog";
 import { servicesStyles } from "./styles";
 import type { Service, ServicesProps } from "./types";
 

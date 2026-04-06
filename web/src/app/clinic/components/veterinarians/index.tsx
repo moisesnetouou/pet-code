@@ -12,7 +12,7 @@ import {
   DialogContent,
   DialogHeader,
   DialogTitle,
-} from "@/components/ui/dialog";
+} from "@/components/base/dialog";
 import { veterinariansStyles } from "./styles";
 import type { Veterinarian, VeterinariansProps } from "./types";
 

@@ -1,5 +1,14 @@
 export type { AvatarProps } from "./avatar";
 export { Avatar } from "./avatar";
+export { ScrollArea, ScrollBar } from "./scroll-area";
+export {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "./dropdown-menu";
 export type { BadgeProps, BadgeSize, BadgeVariant } from "./badge";
 export { Badge, StatusBadge, TypeBadge } from "./badge";
 export type { ButtonProps, ButtonSize, ButtonVariant } from "./button";

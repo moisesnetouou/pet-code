@@ -2,7 +2,7 @@ import { tv } from "tailwind-variants";
 
 export const buttonStyles = tv({
   slots: {
-    base: "inline-flex items-center justify-center font-medium transition-all rounded-lg focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none",
+    base: "inline-flex items-center justify-center font-medium transition-all rounded-lg cursor-pointer focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none",
     icon: "shrink-0",
   },
   variants: {

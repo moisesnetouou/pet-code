@@ -122,7 +122,7 @@ export default function EstoquePage() {
 
   return (
     <div className="min-h-screen bg-slate-50">
-      <Sidebar open={sidebarOpen} onToggle={setSidebarOpen} />
+      <Sidebar open={sidebarOpen} onToggle={setSidebarOpen} currentPath="/estoque" />
       <div
         className={`transition-all duration-300 ${sidebarOpen ? "ml-64" : "ml-16"}`}
       >

@@ -9,7 +9,7 @@ import {
   DialogContent,
   DialogHeader,
   DialogTitle,
-} from "@/components/ui/dialog";
+} from "@/components/base/dialog";
 import { scheduleStyles } from "./styles";
 import type { ScheduleProps } from "./types";
 

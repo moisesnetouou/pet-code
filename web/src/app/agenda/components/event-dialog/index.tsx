@@ -11,7 +11,7 @@ import {
   DialogFooter,
   DialogHeader,
   DialogTitle,
-} from "@/components/ui/dialog";
+} from "@/components/base/dialog";
 import type { CalendarEvent, EventType } from "../../types";
 import { eventTypeConfig } from "../../types";
 import { eventDialogStyles } from "./styles";

@@ -4,6 +4,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { Search, SlidersHorizontal } from "lucide-react";
 import { useState } from "react";
 import { cn } from "@/lib/utils";
+import { Input } from "./input";
 import { Select } from "./select";
 
 interface FilterOption {
@@ -57,13 +58,12 @@ export function FilterBar({
       <div className="flex items-center gap-3">
         {/* Search Input */}
         <div className="relative flex-1">
-          <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
-          <input
-            type="text"
+          <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 z-10" />
+          <Input
             placeholder={searchPlaceholder}
             value={searchValue}
             onChange={(e) => onSearchChange(e.target.value)}
-            className="w-full pl-10 pr-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-slate-700 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-teal-500/20 focus:border-teal-500 transition-all"
+            className="pl-10"
           />
         </div>
 

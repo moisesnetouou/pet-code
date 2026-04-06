@@ -180,3 +180,12 @@ body {
     color: var(--color-info-text);
   }
 }
+
+/* Global interactive elements */
+a,
+button,
+[role="button"],
+[tabindex]:not([tabindex="-1"]),
+Link {
+  cursor: pointer;
+}

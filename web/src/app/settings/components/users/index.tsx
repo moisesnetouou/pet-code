@@ -14,7 +14,7 @@ import {
   DialogContent,
   DialogHeader,
   DialogTitle,
-} from "@/components/ui/dialog";
+} from "@/components/base/dialog";
 import { usersStyles } from "./styles";
 import type { User, UsersProps } from "./types";
 

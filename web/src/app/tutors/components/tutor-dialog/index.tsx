@@ -10,7 +10,7 @@ import {
   DialogFooter,
   DialogHeader,
   DialogTitle,
-} from "@/components/ui/dialog";
+} from "@/components/base/dialog";
 import type { Tutor } from "../../types";
 import { tutorDialogStyles } from "./styles";
 

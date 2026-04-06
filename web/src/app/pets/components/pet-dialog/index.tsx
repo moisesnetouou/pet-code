@@ -11,7 +11,7 @@ import {
   DialogFooter,
   DialogHeader,
   DialogTitle,
-} from "@/components/ui/dialog";
+} from "@/components/base/dialog";
 import { petTypes } from "../../data";
 import type { Pet, PetType } from "../../types";
 import { petDialogStyles } from "./styles";

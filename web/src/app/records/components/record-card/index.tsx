@@ -16,13 +16,13 @@ import {
   DialogContent,
   DialogHeader,
   DialogTitle,
-} from "@/components/ui/dialog";
+} from "@/components/base/dialog";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
+} from "@/components/base/dropdown-menu";
 import { cn } from "@/lib/utils";
 import { recordCardStyles } from "./styles";
 import type { RecordCardProps } from "./types";

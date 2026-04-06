@@ -10,7 +10,7 @@ import {
   DialogContent,
   DialogHeader,
   DialogTitle,
-} from "@/components/ui/dialog";
+} from "@/components/base/dialog";
 import { clinicInfoStyles } from "./styles";
 import type { ClinicInfoProps } from "./types";
 

@@ -77,15 +77,15 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
             "border bg-white text-slate-800 placeholder:text-slate-400",
 
             // Estados via data-[state=xxx]
-            "data-[state=default]:border-slate-300",
-            "data-[state=filled]:border-slate-400",
-            "data-[state=focus]:border data-[state=focus]:border-teal-500 data-[state=focus]:ring-2 data-[state=focus]:ring-teal-500/20",
+            "data-[state=default]:border-teal-300",
+            "data-[state=filled]:border-teal-400",
+            "data-[state=focus]:border-teal-500 data-[state=focus]:outline-2 data-[state=focus]:outline-teal-500",
             "data-[state=disabled]:border-slate-200 data-[state=disabled]:bg-slate-100 data-[state=disabled]:opacity-50 data-[state=disabled]:cursor-not-allowed data-[state=disabled]:text-slate-400",
-            "data-[state=error]:border data-[state=error]:border-red-500 data-[state=error]:ring-2 data-[state=error]:ring-red-500/20",
+            "data-[state=error]:border data-[state=error]:border-red-500 data-[state=error]:outline-2 data-[state=error]:outline-red-500",
 
             // Hover states (exceto disabled e error)
-            "hover:data-[state=default]:border-slate-400",
-            "hover:data-[state=filled]:border-slate-500",
+            "hover:data-[state=default]:border-teal-400",
+            "hover:data-[state=filled]:border-teal-500",
             "hover:data-[state=focus]:border-teal-600",
             "data-[state=disabled]:hover:border-slate-200",
             "data-[state=error]:hover:border-red-600",
