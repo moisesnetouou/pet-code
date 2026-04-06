@@ -1,7 +1,7 @@
 "use client";
 
 import { CalendarPlus, ClipboardList, PawPrint, Users } from "lucide-react";
-import { Card, CardContent } from "@/components/ui/card";
+import { Card, CardContent } from "@/components/base/card";
 import { quickActions as defaultActions } from "../../data";
 import { quickActionsStyles } from "./styles";
 import type { QuickActionsProps } from "./types";

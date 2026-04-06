@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Button, Input } from "@/components/base";
+import { Button, Checkbox, Input } from "@/components/base";
 
 export default function LoginPage() {
   return (
@@ -138,32 +138,26 @@ export default function LoginPage() {
               placeholder="seu@email.com"
             />
 
-            <div className="space-y-1.5">
-              <Input
-                label="Senha"
-                type="password"
-                id="password"
-                placeholder="••••••••"
-              />
-              <div className="flex justify-end -mt-1">
-                <Link
-                  href="/forgot-password"
-                  className="text-sm text-teal-600 hover:text-teal-700 font-medium"
-                >
-                  Esqueceu a senha?
-                </Link>
-              </div>
-            </div>
+            <Input
+              label="Senha"
+              type="password"
+              id="password"
+              placeholder="••••••••"
+            />
 
-            <div className="flex items-center">
-              <input
-                type="checkbox"
-                id="remember"
-                className="w-4 h-4 rounded border-slate-300 text-teal-600 focus:ring-teal-500"
-              />
-              <label htmlFor="remember" className="ml-2 text-sm text-slate-600">
-                Lembrar-me por 30 dias
-              </label>
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-2">
+                <Checkbox id="remember" />
+                <label htmlFor="remember" className="text-sm text-slate-600">
+                  Lembrar-me por 30 dias
+                </label>
+              </div>
+              <Link
+                href="/forgot-password"
+                className="text-sm text-teal-600 hover:text-teal-700 font-medium"
+              >
+                Esqueceu a senha?
+              </Link>
             </div>
 
             <Button type="submit" className="w-full">

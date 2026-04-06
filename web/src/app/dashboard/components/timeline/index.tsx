@@ -2,9 +2,9 @@
 
 import { ArrowRight, Check, Clock, Trash2, UserCheck } from "lucide-react";
 import { useState } from "react";
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
+import { Badge } from "@/components/base/badge";
+import { Button } from "@/components/base/button";
+import { Card, CardContent } from "@/components/base/card";
 import { cn } from "@/lib/utils";
 import { appointments as defaultAppointments, typeConfig } from "../../data";
 import { timelineStyles } from "./styles";

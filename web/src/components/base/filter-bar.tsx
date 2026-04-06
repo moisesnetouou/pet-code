@@ -108,7 +108,11 @@ export function FilterBar({
                 options={filter.options}
                 value={filter.value}
                 onChange={filter.onChange}
-                placeholder={filter.label ? `Selecione ${filter.label.toLowerCase()}` : "Selecione..."}
+                placeholder={
+                  filter.label
+                    ? `Selecione ${filter.label.toLowerCase()}`
+                    : "Selecione..."
+                }
               />
             ))}
 
@@ -123,7 +127,9 @@ export function FilterBar({
             )}
 
             {/* Actions */}
-            {actions && <div className="flex items-center gap-2">{actions}</div>}
+            {actions && (
+              <div className="flex items-center gap-2">{actions}</div>
+            )}
           </motion.div>
         )}
       </AnimatePresence>

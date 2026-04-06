@@ -2,16 +2,16 @@
 
 import { ClipboardList, Pencil, Plus } from "lucide-react";
 import { useState } from "react";
-import { Button } from "@/components/ui/button";
+import { Button } from "@/components/base/button";
+import { Input } from "@/components/base/input";
+import { Label } from "@/components/base/label";
+import { Switch } from "@/components/base/switch";
 import {
   Dialog,
   DialogContent,
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { Switch } from "@/components/ui/switch";
 import { servicesStyles } from "./styles";
 import type { Service, ServicesProps } from "./types";
 

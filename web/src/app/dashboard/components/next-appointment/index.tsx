@@ -1,8 +1,8 @@
 "use client";
 
 import { Clock } from "lucide-react";
-import { Badge } from "@/components/ui/badge";
-import { Card, CardContent } from "@/components/ui/card";
+import { Badge } from "@/components/base/badge";
+import { Card, CardContent } from "@/components/base/card";
 import { pets as defaultPets } from "../../data";
 import { nextAppointmentStyles } from "./styles";
 import type { NextAppointmentProps } from "./types";

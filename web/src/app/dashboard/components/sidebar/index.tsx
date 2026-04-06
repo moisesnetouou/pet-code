@@ -2,7 +2,7 @@
 
 import { ChevronLeft, Heart } from "lucide-react";
 import Link from "next/link";
-import { Avatar, AvatarFallback } from "@/components/ui/avatar";
+import { Avatar } from "@/components/base/avatar";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { cn } from "@/lib/utils";
 import { menuItems } from "../../data";
@@ -60,9 +60,9 @@ export function Sidebar({
       <div className={s.userContainer()}>
         <div className={cn(s.userInner(), !open && "justify-center")}>
           <Avatar className={s.userAvatar()}>
-            <AvatarFallback className="bg-teal-500 text-white font-bold">
+            <span className="bg-teal-500 text-white font-bold">
               {userInitials}
-            </AvatarFallback>
+            </span>
           </Avatar>
           {open && (
             <div className="flex-1 min-w-0">

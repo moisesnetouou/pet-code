@@ -4,7 +4,14 @@ export type ButtonVariant =
   | "outline"
   | "ghost"
   | "destructive";
-export type ButtonSize = "sm" | "md" | "lg" | "icon-sm" | "icon-md" | "icon-lg";
+export type ButtonSize =
+  | "sm"
+  | "md"
+  | "lg"
+  | "icon"
+  | "icon-sm"
+  | "icon-md"
+  | "icon-lg";
 
 export interface ButtonProps {
   variant?: ButtonVariant;

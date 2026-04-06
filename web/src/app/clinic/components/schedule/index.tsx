@@ -2,14 +2,14 @@
 
 import { Clock, Pencil } from "lucide-react";
 import { useState } from "react";
-import { Button } from "@/components/ui/button";
+import { Button } from "@/components/base/button";
+import { Input } from "@/components/base/input";
 import {
   Dialog,
   DialogContent,
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
-import { Input } from "@/components/ui/input";
 import { scheduleStyles } from "./styles";
 import type { ScheduleProps } from "./types";
 

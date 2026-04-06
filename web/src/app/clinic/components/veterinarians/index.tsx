@@ -2,17 +2,17 @@
 
 import { Pencil, Plus, Stethoscope } from "lucide-react";
 import { useState } from "react";
-import { Avatar, AvatarFallback } from "@/components/ui/avatar";
-import { Button } from "@/components/ui/button";
+import { Avatar } from "@/components/base/avatar";
+import { Button } from "@/components/base/button";
+import { Input } from "@/components/base/input";
+import { Label } from "@/components/base/label";
+import { Switch } from "@/components/base/switch";
 import {
   Dialog,
   DialogContent,
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { Switch } from "@/components/ui/switch";
 import { veterinariansStyles } from "./styles";
 import type { Veterinarian, VeterinariansProps } from "./types";
 
@@ -66,9 +66,9 @@ export function Veterinarians({
             <div key={vet.id} className={v.vetCard()}>
               <div className={v.vetHeader()}>
                 <Avatar className={v.vetAvatar()}>
-                  <AvatarFallback className="bg-teal-100 text-teal-700 font-bold">
+                  <span className="bg-teal-100 text-teal-700 font-bold">
                     {getInitials(vet.name)}
-                  </AvatarFallback>
+                  </span>
                 </Avatar>
                 <div className={v.vetInfo()}>
                   <div className="flex items-center gap-2 w-full">

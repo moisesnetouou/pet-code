@@ -3,7 +3,7 @@
 import { Save, Settings } from "lucide-react";
 import { useState } from "react";
 import { Select } from "@/components/base/select";
-import { Switch } from "@/components/ui/switch";
+import { Switch } from "@/components/base/switch";
 import { preferencesStyles } from "./styles";
 import type { PreferencesProps } from "./types";
 
@@ -68,113 +68,91 @@ export function Preferences({
 
       <div className={p.section()}>
         <h4 className={p.sectionTitle()}>Aparência</h4>
-
-        <div className={p.optionRow()}>
-          <div className={p.optionLabel()}>
-            <p className={p.optionLabelTitle()}>Tema</p>
-            <p className={p.optionLabelDesc()}>Escolha o tema da interface</p>
+        <div className={p.grid()}>
+          <div className={p.card()}>
+            <span className={p.cardLabel()}>Tema</span>
+            <Select
+              options={Object.entries(themeLabels).map(([value, label]) => ({
+                value,
+                label,
+              }))}
+              value={preferences.theme}
+              onChange={(value) =>
+                setPreferences((prev) => ({ ...prev, theme: value }))
+              }
+            />
           </div>
-          <Select
-            options={Object.entries(themeLabels).map(([value, label]) => ({
-              value,
-              label,
-            }))}
-            value={preferences.theme}
-            onChange={(value) =>
-              setPreferences((prev) => ({ ...prev, theme: value }))
-            }
-          />
-        </div>
-
-        <div className={p.optionRow()}>
-          <div className={p.optionLabel()}>
-            <p className={p.optionLabelTitle()}>Idioma</p>
-            <p className={p.optionLabelDesc()}>Idioma da interface</p>
+          <div className={p.card()}>
+            <span className={p.cardLabel()}>Idioma</span>
+            <Select
+              options={Object.entries(languageLabels).map(([value, label]) => ({
+                value,
+                label,
+              }))}
+              value={preferences.language}
+              onChange={(value) =>
+                setPreferences((prev) => ({ ...prev, language: value }))
+              }
+            />
           </div>
-          <Select
-            options={Object.entries(languageLabels).map(([value, label]) => ({
-              value,
-              label,
-            }))}
-            value={preferences.language}
-            onChange={(value) =>
-              setPreferences((prev) => ({ ...prev, language: value }))
-            }
-          />
         </div>
       </div>
 
       <div className={p.section()}>
         <h4 className={p.sectionTitle()}>Data e Hora</h4>
-
-        <div className={p.optionRow()}>
-          <div className={p.optionLabel()}>
-            <p className={p.optionLabelTitle()}>Formato de data</p>
-            <p className={p.optionLabelDesc()}>Formato de exibição das datas</p>
+        <div className={p.grid()}>
+          <div className={p.card()}>
+            <span className={p.cardLabel()}>Formato de data</span>
+            <Select
+              options={Object.entries(dateFormatLabels).map(([value, label]) => ({
+                value,
+                label,
+              }))}
+              value={preferences.dateFormat}
+              onChange={(value) =>
+                setPreferences((prev) => ({
+                  ...prev,
+                  dateFormat: value,
+                }))
+              }
+            />
           </div>
-          <Select
-            options={Object.entries(dateFormatLabels).map(([value, label]) => ({
-              value,
-              label,
-            }))}
-            value={preferences.dateFormat}
-            onChange={(value) =>
-              setPreferences((prev) => ({
-                ...prev,
-                dateFormat: value,
-              }))
-            }
-          />
-        </div>
-
-        <div className={p.optionRow()}>
-          <div className={p.optionLabel()}>
-            <p className={p.optionLabelTitle()}>Formato de hora</p>
-            <p className={p.optionLabelDesc()}>Formato de exibição das horas</p>
+          <div className={p.card()}>
+            <span className={p.cardLabel()}>Formato de hora</span>
+            <Select
+              options={Object.entries(timeFormatLabels).map(([value, label]) => ({
+                value,
+                label,
+              }))}
+              value={preferences.timeFormat}
+              onChange={(value) =>
+                setPreferences((prev) => ({
+                  ...prev,
+                  timeFormat: value,
+                }))
+              }
+            />
           </div>
-          <Select
-            options={Object.entries(timeFormatLabels).map(([value, label]) => ({
-              value,
-              label,
-            }))}
-            value={preferences.timeFormat}
-            onChange={(value) =>
-              setPreferences((prev) => ({
-                ...prev,
-                timeFormat: value,
-              }))
-            }
-          />
         </div>
       </div>
 
       <div className={p.section()}>
         <h4 className={p.sectionTitle()}>Notificações</h4>
-
-        <div className={p.optionRow()}>
-          <div className={p.optionLabel()}>
-            <p className={p.optionLabelTitle()}>Notificações por email</p>
-            <p className={p.optionLabelDesc()}>
-              Receber notificações por email
-            </p>
+        <div className={p.grid()}>
+          <div className={p.card()}>
+            <span className={p.cardLabel()}>Notificações por email</span>
+            <Switch
+              checked={preferences.emailNotifications}
+              onCheckedChange={toggleEmailNotifications}
+            />
           </div>
-          <Switch
-            checked={preferences.emailNotifications}
-            onCheckedChange={toggleEmailNotifications}
-          />
-        </div>
-
-        <div className={p.optionRow()}>
-          <div className={p.optionLabel()}>
-            <p className={p.optionLabelTitle()}>Notificações push</p>
-            <p className={p.optionLabelDesc()}>
-              Receber notificações no navegador
-            </p>
+          <div className={p.card()}>
+            <span className={p.cardLabel()}>Notificações push</span>
+            <Switch
+              checked={preferences.pushNotifications}
+              onCheckedChange={togglePushNotifications}
+            />
           </div>
-          <Switch
-            checked={preferences.pushNotifications}
-            onCheckedChange={togglePushNotifications}
-          />
         </div>
       </div>
     </div>

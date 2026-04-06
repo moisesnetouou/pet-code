@@ -6,9 +6,20 @@ import { checkboxStyles } from "./styles";
 import type { CheckboxProps } from "./types";
 
 const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
-  ({ className, label, checked = false, onChange, disabled, error }, ref) => {
+  (
+    {
+      id: externalId,
+      className,
+      label,
+      checked = false,
+      onChange,
+      disabled,
+      error,
+    },
+    ref,
+  ) => {
     const generatedId = useId();
-    const checkboxId = `checkbox-${generatedId}`;
+    const checkboxId = externalId || `checkbox-${generatedId}`;
     const [state, setState] = useState<"default" | "focus">("default");
 
     const s = checkboxStyles({

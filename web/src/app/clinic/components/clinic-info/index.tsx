@@ -2,15 +2,15 @@
 
 import { Building2, Pencil } from "lucide-react";
 import { useState } from "react";
-import { Button } from "@/components/ui/button";
+import { Button } from "@/components/base/button";
+import { Input } from "@/components/base/input";
+import { Label } from "@/components/base/label";
 import {
   Dialog,
   DialogContent,
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
 import { clinicInfoStyles } from "./styles";
 import type { ClinicInfoProps } from "./types";
 

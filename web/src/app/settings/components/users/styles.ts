@@ -19,7 +19,6 @@ export const usersStyles = tv({
     userName: "font-medium text-slate-800",
     userEmail: "text-xs text-slate-500",
     roleBadge: "px-2 py-0.5 rounded text-xs font-medium",
-    statusBadge: "px-2 py-0.5 rounded-full text-xs font-medium",
     actionsButton:
       "p-1.5 rounded-lg text-slate-400 hover:text-teal-600 hover:bg-teal-50 transition-colors",
   },

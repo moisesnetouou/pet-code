@@ -2,18 +2,19 @@
 
 import { Pencil, Plus, Trash2, Users as UsersIcon } from "lucide-react";
 import { useState } from "react";
+import { Avatar } from "@/components/base/avatar";
+import { StatusBadge } from "@/components/base/badge";
+import { Button } from "@/components/base/button";
+import { Input } from "@/components/base/input";
+import { Label } from "@/components/base/label";
 import { Select } from "@/components/base/select";
-import { Avatar, AvatarFallback } from "@/components/ui/avatar";
-import { Button } from "@/components/ui/button";
+import { Switch } from "@/components/base/switch";
 import {
   Dialog,
   DialogContent,
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { Switch } from "@/components/ui/switch";
 import { usersStyles } from "./styles";
 import type { User, UsersProps } from "./types";
 
@@ -96,9 +97,9 @@ export function Users({ users: initialUsers }: UsersProps) {
                 <td className={u.tableCell()}>
                   <div className={u.userInfo()}>
                     <Avatar className={u.userAvatar()}>
-                      <AvatarFallback className="bg-teal-100 text-teal-700 font-bold text-xs">
+                      <span className="bg-teal-100 text-teal-700 font-bold text-xs">
                         {getInitials(user.name)}
-                      </AvatarFallback>
+                      </span>
                     </Avatar>
                     <div>
                       <p className={u.userName()}>{user.name}</p>
@@ -122,17 +123,7 @@ export function Users({ users: initialUsers }: UsersProps) {
                 <td className={u.tableCell()}>{user.lastLogin || "-"}</td>
                 <td className={u.tableCell()}>
                   <div className="flex items-center gap-2">
-                    <span className={u.statusBadge()}>
-                      {user.isActive ? (
-                        <span className="bg-emerald-100 text-emerald-800">
-                          Ativo
-                        </span>
-                      ) : (
-                        <span className="bg-slate-200 text-slate-600">
-                          Inativo
-                        </span>
-                      )}
-                    </span>
+                    <StatusBadge status={user.isActive ? "ativo" : "inativo"} />
                     <Switch
                       checked={user.isActive}
                       onCheckedChange={() => handleToggle(user.id)}

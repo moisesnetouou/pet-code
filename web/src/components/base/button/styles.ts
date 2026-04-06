@@ -36,6 +36,10 @@ export const buttonStyles = tv({
         base: "h-11 px-6 text-base gap-2",
         icon: "w-5 h-5",
       },
+      icon: {
+        base: "size-10",
+        icon: "w-5 h-5",
+      },
       "icon-sm": {
         base: "size-8",
         icon: "w-4 h-4",

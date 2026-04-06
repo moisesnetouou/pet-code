@@ -1,5 +1,5 @@
-import { Switch } from "@/components/ui/switch";
 import { FilterBar } from "@/components/base";
+import { Switch } from "@/components/base/switch";
 import type { FilterOptions, StockType } from "../../types";
 import { stockTypeLabels } from "../../types";
 

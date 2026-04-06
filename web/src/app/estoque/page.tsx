@@ -2,6 +2,7 @@
 
 import { Plus } from "lucide-react";
 import { useMemo, useState } from "react";
+import { Button } from "@/components/base/button";
 import { Header } from "../dashboard/components/header";
 import { Sidebar } from "../dashboard/components/sidebar";
 import { greeting } from "../dashboard/utils/greeting";
@@ -136,13 +137,10 @@ export default function EstoquePage() {
                   Gerencie os itens do estoque da clínica
                 </p>
               </div>
-              <button
-                onClick={handleAddNew}
-                className="flex items-center gap-2 px-4 py-2.5 bg-teal-500 hover:bg-teal-600 text-white font-medium rounded-xl transition-colors"
-              >
+              <Button onClick={handleAddNew}>
                 <Plus className="w-4 h-4" />
                 Novo Item
-              </button>
+              </Button>
             </div>
 
             {/* Stats */}

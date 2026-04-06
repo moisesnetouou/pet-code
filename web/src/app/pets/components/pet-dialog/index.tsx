@@ -1,8 +1,10 @@
 "use client";
 
 import { useState } from "react";
+import { Button } from "@/components/base/button";
+import { Input } from "@/components/base/input";
+import { Label } from "@/components/base/label";
 import { Select } from "@/components/base/select";
-import { Button } from "@/components/ui/button";
 import {
   Dialog,
   DialogContent,
@@ -10,8 +12,6 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
 import { petTypes } from "../../data";
 import type { Pet, PetType } from "../../types";
 import { petDialogStyles } from "./styles";

@@ -10,11 +10,9 @@ export const preferencesStyles = tv({
       "bg-teal-500 hover:bg-teal-600 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors",
     section: "mb-6 last:mb-0",
     sectionTitle: "text-base font-semibold text-slate-800 mb-4",
-    optionRow:
-      "flex items-center justify-between py-3 border-b border-slate-100 last:border-0",
-    optionLabel: "",
-    optionLabelTitle: "text-sm font-medium text-slate-700",
-    optionLabelDesc: "text-xs text-slate-500",
-    optionControl: "",
+    grid: "grid grid-cols-1 sm:grid-cols-2 gap-4",
+    card: "bg-white border border-slate-200 rounded-xl p-4 flex flex-col gap-3",
+    cardLabel: "text-base font-semibold text-slate-800",
+    cardValue: "text-sm text-slate-500",
   },
 });

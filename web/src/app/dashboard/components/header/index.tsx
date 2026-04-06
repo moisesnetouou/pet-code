@@ -2,8 +2,8 @@
 
 import { Bell, CalendarPlus, Search, UserPlus } from "lucide-react";
 import { useState } from "react";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
+import { Button } from "@/components/base/button";
+import { Input } from "@/components/base/input";
 import { cn } from "@/lib/utils";
 import { headerStyles } from "./styles";
 import type { HeaderProps } from "./types";
