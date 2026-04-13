@@ -5,16 +5,16 @@ import { useState } from "react";
 import { Avatar } from "@/components/base/avatar";
 import { StatusBadge } from "@/components/base/badge";
 import { Button } from "@/components/base/button";
-import { Input } from "@/components/base/input";
-import { Label } from "@/components/base/label";
-import { Select } from "@/components/base/select";
-import { Switch } from "@/components/base/switch";
 import {
   Dialog,
   DialogContent,
   DialogHeader,
   DialogTitle,
 } from "@/components/base/dialog";
+import { Input } from "@/components/base/input";
+import { Label } from "@/components/base/label";
+import { Select } from "@/components/base/select";
+import { Switch } from "@/components/base/switch";
 import { usersStyles } from "./styles";
 import type { User, UsersProps } from "./types";
 
@@ -167,17 +167,13 @@ export function Users({ users: initialUsers }: UsersProps) {
                 <Label className="text-sm font-medium text-slate-700">
                   Nome
                 </Label>
-                <Input
-                  defaultValue={selectedUser.name}
-                />
+                <Input defaultValue={selectedUser.name} />
               </div>
               <div className="space-y-2">
                 <Label className="text-sm font-medium text-slate-700">
                   Email
                 </Label>
-                <Input
-                  defaultValue={selectedUser.email}
-                />
+                <Input defaultValue={selectedUser.email} />
               </div>
               <div className="space-y-2">
                 <Label className="text-sm font-medium text-slate-700">
@@ -200,9 +196,7 @@ export function Users({ users: initialUsers }: UsersProps) {
             <Button variant="outline" onClick={() => setShowEditDialog(false)}>
               Cancelar
             </Button>
-            <Button>
-              Salvar
-            </Button>
+            <Button>Salvar</Button>
           </div>
         </DialogContent>
       </Dialog>
@@ -223,19 +217,13 @@ export function Users({ users: initialUsers }: UsersProps) {
               <Label className="text-sm font-medium text-slate-700">
                 Email
               </Label>
-              <Input
-                type="email"
-                placeholder="email@exemplo.com"
-              />
+              <Input type="email" placeholder="email@exemplo.com" />
             </div>
             <div className="space-y-2">
               <Label className="text-sm font-medium text-slate-700">
                 Senha
               </Label>
-              <Input
-                type="password"
-                placeholder="••••••••"
-              />
+              <Input type="password" placeholder="••••••••" />
             </div>
             <div className="space-y-2">
               <Label className="text-sm font-medium text-slate-700">
@@ -257,9 +245,7 @@ export function Users({ users: initialUsers }: UsersProps) {
             <Button variant="outline" onClick={() => setShowAddDialog(false)}>
               Cancelar
             </Button>
-            <Button>
-              Criar Usuário
-            </Button>
+            <Button>Criar Usuário</Button>
           </div>
         </DialogContent>
       </Dialog>

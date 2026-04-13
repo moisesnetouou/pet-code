@@ -1,0 +1,9 @@
+# Pets Photos
+
+This folder stores pet profile photos uploaded by users.
+
+- Supported formats: JPG, PNG, WebP
+- Max file size: 5MB
+- Naming convention: `{petId}.{extension}`
+
+In production, images should be stored in cloud storage (Cloudinary/S3).

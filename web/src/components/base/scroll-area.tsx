@@ -1,7 +1,7 @@
 "use client";
 
 import { ScrollArea as ScrollAreaPrimitive } from "@base-ui/react/scroll-area";
-import { ReactNode, forwardRef } from "react";
+import { forwardRef, type ReactNode } from "react";
 import { cn } from "@/lib/utils";
 
 interface ScrollAreaProps {
@@ -12,10 +12,7 @@ interface ScrollAreaProps {
 const ScrollArea = forwardRef<HTMLDivElement, ScrollAreaProps>(
   ({ className, children }, ref) => {
     return (
-      <ScrollAreaPrimitive.Root
-        ref={ref}
-        className={cn("relative", className)}
-      >
+      <ScrollAreaPrimitive.Root ref={ref} className={cn("relative", className)}>
         <ScrollAreaPrimitive.Viewport className="size-full rounded-[inherit] outline-none">
           {children}
         </ScrollAreaPrimitive.Viewport>
@@ -23,7 +20,7 @@ const ScrollArea = forwardRef<HTMLDivElement, ScrollAreaProps>(
         <ScrollAreaPrimitive.Corner />
       </ScrollAreaPrimitive.Root>
     );
-  }
+  },
 );
 
 ScrollArea.displayName = "ScrollArea";
@@ -50,7 +47,7 @@ const ScrollBar = forwardRef<HTMLDivElement, ScrollBarProps>(
         <ScrollAreaPrimitive.Thumb className="relative flex-1 rounded-full bg-slate-300 hover:bg-slate-400" />
       </ScrollAreaPrimitive.Scrollbar>
     );
-  }
+  },
 );
 
 ScrollBar.displayName = "ScrollBar";

@@ -24,6 +24,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/base/dropdown-menu";
 import { cn } from "@/lib/utils";
+import { RecordDialog } from "../record-dialog";
 import { recordCardStyles } from "./styles";
 import type { RecordCardProps } from "./types";
 
@@ -53,13 +54,20 @@ export function RecordCard({ record }: RecordCardProps) {
     text: "text-slate-700",
   };
   const [showDetails, setShowDetails] = useState(false);
+  const [showEditDialog, setShowEditDialog] = useState(false);
 
   const handleEdit = () => {
-    console.log("Edit record:", record.id);
+    setShowDetails(false);
+    setShowEditDialog(true);
   };
 
   const handleDelete = () => {
     console.log("Delete record:", record.id);
+  };
+
+  const handleSaveEdit = (recordData: Omit<typeof record, "id">) => {
+    console.log("Save edit:", recordData);
+    setShowEditDialog(false);
   };
 
   return (
@@ -230,7 +238,11 @@ export function RecordCard({ record }: RecordCardProps) {
           </div>
 
           <div className="flex justify-end gap-3 mt-6">
-            <Button variant="outline" className="border-slate-200 text-slate-700 hover:bg-slate-100" onClick={() => setShowDetails(false)}>
+            <Button
+              variant="outline"
+              className="border-slate-200 text-slate-700 hover:bg-slate-100"
+              onClick={() => setShowDetails(false)}
+            >
               Fechar
             </Button>
             <Button onClick={handleEdit}>
@@ -240,6 +252,13 @@ export function RecordCard({ record }: RecordCardProps) {
           </div>
         </DialogContent>
       </Dialog>
+
+      <RecordDialog
+        open={showEditDialog}
+        onOpenChange={setShowEditDialog}
+        record={record}
+        onSave={handleSaveEdit}
+      />
     </>
   );
 }

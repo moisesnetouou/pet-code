@@ -2,9 +2,6 @@
 
 import { useState } from "react";
 import { Button } from "@/components/base/button";
-import { Input } from "@/components/base/input";
-import { Label } from "@/components/base/label";
-import { Select } from "@/components/base/select";
 import {
   Dialog,
   DialogContent,
@@ -12,6 +9,9 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/base/dialog";
+import { Input } from "@/components/base/input";
+import { Label } from "@/components/base/label";
+import { Select } from "@/components/base/select";
 import type { CalendarEvent, EventType } from "../../types";
 import { eventTypeConfig } from "../../types";
 import { eventDialogStyles } from "./styles";
@@ -211,10 +211,7 @@ export function EventDialog({
           >
             Cancelar
           </Button>
-          <Button
-            type="button"
-            onClick={handleSubmit}
-          >
+          <Button type="button" onClick={handleSubmit}>
             Salvar
           </Button>
         </DialogFooter>

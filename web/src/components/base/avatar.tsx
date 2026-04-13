@@ -1,6 +1,6 @@
 "use client";
 
-import { forwardRef, ReactNode } from "react";
+import { forwardRef, type ReactNode } from "react";
 import { tv } from "tailwind-variants";
 import { cn } from "@/lib/utils";
 

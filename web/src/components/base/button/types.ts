@@ -21,4 +21,5 @@ export interface ButtonProps {
   fullWidth?: boolean;
   type?: "button" | "submit" | "reset";
   onClick?: () => void;
+  disabled?: boolean;
 }

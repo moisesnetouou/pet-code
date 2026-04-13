@@ -3,14 +3,14 @@
 import { Building2, Pencil } from "lucide-react";
 import { useState } from "react";
 import { Button } from "@/components/base/button";
-import { Input } from "@/components/base/input";
-import { Label } from "@/components/base/label";
 import {
   Dialog,
   DialogContent,
   DialogHeader,
   DialogTitle,
 } from "@/components/base/dialog";
+import { Input } from "@/components/base/input";
+import { Label } from "@/components/base/label";
 import { clinicInfoStyles } from "./styles";
 import type { ClinicInfoProps } from "./types";
 
@@ -103,9 +103,7 @@ export function ClinicInfo({ clinic: initialClinic }: ClinicInfoProps) {
                 <Label className="text-sm font-medium text-slate-700">
                   Telefone
                 </Label>
-                <Input
-                  defaultValue={clinic.phone}
-                />
+                <Input defaultValue={clinic.phone} />
               </div>
               <div className="space-y-2">
                 <Label className="text-sm font-medium text-slate-700">
@@ -124,26 +122,20 @@ export function ClinicInfo({ clinic: initialClinic }: ClinicInfoProps) {
               <Label className="text-sm font-medium text-slate-700">
                 Endereço
               </Label>
-              <Input
-                defaultValue={clinic.address}
-              />
+              <Input defaultValue={clinic.address} />
             </div>
             <div className="grid grid-cols-2 gap-4">
               <div className="space-y-2">
                 <Label className="text-sm font-medium text-slate-700">
                   Cidade
                 </Label>
-                <Input
-                  defaultValue={clinic.city}
-                />
+                <Input defaultValue={clinic.city} />
               </div>
               <div className="space-y-2">
                 <Label className="text-sm font-medium text-slate-700">
                   Estado
                 </Label>
-                <Input
-                  defaultValue={clinic.state}
-                />
+                <Input defaultValue={clinic.state} />
               </div>
             </div>
           </div>
@@ -152,9 +144,7 @@ export function ClinicInfo({ clinic: initialClinic }: ClinicInfoProps) {
             <Button variant="outline" onClick={() => setShowEditDialog(false)}>
               Cancelar
             </Button>
-            <Button onClick={handleSave}>
-              Salvar
-            </Button>
+            <Button onClick={handleSave}>Salvar</Button>
           </div>
         </DialogContent>
       </Dialog>

@@ -3,13 +3,13 @@
 import { Clock, Pencil } from "lucide-react";
 import { useState } from "react";
 import { Button } from "@/components/base/button";
-import { Input } from "@/components/base/input";
 import {
   Dialog,
   DialogContent,
   DialogHeader,
   DialogTitle,
 } from "@/components/base/dialog";
+import { Input } from "@/components/base/input";
 import { scheduleStyles } from "./styles";
 import type { ScheduleProps } from "./types";
 
@@ -129,9 +129,7 @@ export function Schedule({ schedules: initialSchedules }: ScheduleProps) {
             <Button variant="outline" onClick={() => setShowEditDialog(false)}>
               Cancelar
             </Button>
-            <Button onClick={handleSave}>
-              Salvar
-            </Button>
+            <Button onClick={handleSave}>Salvar</Button>
           </div>
         </DialogContent>
       </Dialog>

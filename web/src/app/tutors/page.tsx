@@ -7,9 +7,12 @@ import { cn } from "@/lib/utils";
 import { Header } from "../dashboard/components/header";
 import { Sidebar } from "../dashboard/components/sidebar";
 import { greeting } from "../dashboard/utils/greeting";
+import { PetDialog } from "../pets/components/pet-dialog";
 import { Filters } from "./components/filters";
 import { TutorDialog } from "./components/tutor-dialog";
+import type { Pet } from "../pets/types";
 import { TutorsGrid } from "./components/tutors-grid";
+import { pets as petData } from "../pets/data";
 import { tutors as initialTutors } from "./data";
 import type { FilterOptions, Tutor } from "./types";
 
@@ -23,6 +26,12 @@ export default function TutorsPage() {
   const [tutors, setTutors] = useState(initialTutors);
   const [selectedTutor, setSelectedTutor] = useState<Tutor | null>(null);
   const [dialogOpen, setDialogOpen] = useState(false);
+  const [petDialogOpen, setPetDialogOpen] = useState(false);
+
+  const allPets = useMemo(
+    () => petData.map((p) => ({ id: p.id, name: p.name, type: p.type, emoji: p.emoji })),
+    [],
+  );
 
   const filteredTutors = useMemo(() => {
     let result = [...tutors];
@@ -88,8 +97,17 @@ export default function TutorsPage() {
     }
   };
 
-  const handleDeleteTutor = (id: number) => {
-    setTutors(tutors.filter((t) => t.id !== id));
+  const handleInactivateTutor = (id: number) => {
+    setTutors(
+      tutors.map((t) =>
+        t.id === id ? { ...t, status: "inativo" as const } : t,
+      ),
+    );
+  };
+
+  const handleSavePet = (petData: Omit<Pet, "id">) => {
+    console.log("Novo pet:", petData);
+    setPetDialogOpen(false);
   };
 
   const handleSearch = (query: string) => {
@@ -142,7 +160,7 @@ export default function TutorsPage() {
               totalResults={filteredTutors.length}
             />
 
-            <TutorsGrid tutors={filteredTutors} onEdit={handleEditTutor} />
+            <TutorsGrid tutors={filteredTutors} />
           </div>
         </main>
       </div>
@@ -152,7 +170,17 @@ export default function TutorsPage() {
         onOpenChange={setDialogOpen}
         tutor={selectedTutor}
         onSave={handleSaveTutor}
-        onDelete={handleDeleteTutor}
+        onInactivate={handleInactivateTutor}
+        allPets={allPets}
+        onOpenPetDialog={setPetDialogOpen}
+      />
+
+      <PetDialog
+        open={petDialogOpen}
+        onOpenChange={setPetDialogOpen}
+        onSave={handleSavePet}
+        tutors={tutors}
+        onOpenTutorDialog={setDialogOpen}
       />
     </div>
   );

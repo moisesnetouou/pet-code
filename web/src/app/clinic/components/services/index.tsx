@@ -3,15 +3,15 @@
 import { ClipboardList, Pencil, Plus } from "lucide-react";
 import { useState } from "react";
 import { Button } from "@/components/base/button";
-import { Input } from "@/components/base/input";
-import { Label } from "@/components/base/label";
-import { Switch } from "@/components/base/switch";
 import {
   Dialog,
   DialogContent,
   DialogHeader,
   DialogTitle,
 } from "@/components/base/dialog";
+import { Input } from "@/components/base/input";
+import { Label } from "@/components/base/label";
+import { Switch } from "@/components/base/switch";
 import { servicesStyles } from "./styles";
 import type { Service, ServicesProps } from "./types";
 
@@ -157,9 +157,7 @@ export function Services({
             <Button variant="outline" onClick={() => setShowEditDialog(false)}>
               Cancelar
             </Button>
-            <Button>
-              Salvar
-            </Button>
+            <Button>Salvar</Button>
           </div>
         </DialogContent>
       </Dialog>

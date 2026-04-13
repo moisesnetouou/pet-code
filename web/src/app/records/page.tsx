@@ -8,9 +8,10 @@ import { Header } from "../dashboard/components/header";
 import { Sidebar } from "../dashboard/components/sidebar";
 import { greeting } from "../dashboard/utils/greeting";
 import { Filters } from "./components/filters";
+import { RecordDialog } from "./components/record-dialog";
 import { RecordsList } from "./components/records-list";
 import { records as initialRecords } from "./data";
-import type { FilterOptions } from "./types";
+import type { FilterOptions, MedicalRecord } from "./types";
 
 export default function RecordsPage() {
   const [sidebarOpen, setSidebarOpen] = useState(true);
@@ -20,6 +21,8 @@ export default function RecordsPage() {
     status: "all",
     sortBy: "date",
   });
+  const [dialogOpen, setDialogOpen] = useState(false);
+  const [selectedRecord, setSelectedRecord] = useState<MedicalRecord | null>(null);
 
   const filteredRecords = useMemo(() => {
     let result = [...initialRecords];
@@ -87,7 +90,7 @@ export default function RecordsPage() {
                   Gerencie os prontuários médicos dos pets
                 </p>
               </div>
-              <Button>
+              <Button onClick={() => setDialogOpen(true)}>
                 <Plus className="w-4 h-4" />
                 Novo Prontuário
               </Button>
@@ -103,6 +106,16 @@ export default function RecordsPage() {
           </div>
         </main>
       </div>
+
+      <RecordDialog
+        open={dialogOpen}
+        onOpenChange={setDialogOpen}
+        record={selectedRecord}
+        onSave={(recordData) => {
+          console.log("Novo record:", recordData);
+          setDialogOpen(false);
+        }}
+      />
     </div>
   );
 }

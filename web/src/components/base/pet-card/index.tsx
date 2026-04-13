@@ -1,8 +1,8 @@
 "use client";
 
 import { Calendar, User, Weight } from "lucide-react";
-import { cn } from "@/lib/utils";
 import { StatusBadge } from "../badge";
+import { PetAvatar } from "../pet-avatar";
 import { petCardStyles } from "./styles";
 import type { PetCardProps, PetStatus } from "./types";
 
@@ -13,8 +13,10 @@ const PetCard = ({
   weight,
   tutor,
   status,
+  type,
   lastVisit,
   emoji,
+  photoUrl,
   onClick,
   className,
 }: PetCardProps) => {
@@ -23,9 +25,13 @@ const PetCard = ({
   return (
     <div className={s.container()} onClick={onClick}>
       <div className={s.header()}>
-        <div className={cn(s.avatarContainer(), "bg-amber-100")}>
-          {emoji || "🐾"}
-        </div>
+        <PetAvatar
+          photoUrl={photoUrl}
+          emoji={emoji}
+          type={type}
+          name={name}
+          size="md"
+        />
         <StatusBadge status={status} />
       </div>
 
@@ -52,14 +58,12 @@ const PetCard = ({
         </div>
       </div>
 
-      {lastVisit && (
-        <div className={s.infoRow()}>
-          <Calendar className={s.infoIcon()} />
-          <span className="text-xs text-slate-600">
-            Última visita: {lastVisit}
-          </span>
-        </div>
-      )}
+      <div className={s.infoRow()}>
+        <Calendar className={s.infoIcon()} />
+        <span className="text-xs text-slate-600">
+          {lastVisit ? `Última visita: ${lastVisit}` : "Sem visitas registradas"}
+        </span>
+      </div>
     </div>
   );
 };

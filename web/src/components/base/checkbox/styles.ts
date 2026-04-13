@@ -4,7 +4,8 @@ export const checkboxStyles = tv({
   slots: {
     container: "flex items-center gap-2",
     wrapper: "relative flex items-center justify-center",
-    input: "w-4 h-4 rounded border transition-colors cursor-pointer appearance-none bg-none",
+    input:
+      "w-4 h-4 rounded border transition-colors cursor-pointer appearance-none bg-none",
     label: "text-sm text-slate-700 cursor-pointer",
   },
   variants: {

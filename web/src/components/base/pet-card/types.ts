@@ -7,8 +7,10 @@ export interface PetCardProps {
   weight: string;
   tutor: string;
   status: PetStatus;
+  type?: string;
   lastVisit?: string;
   emoji?: string;
+  photoUrl?: string;
   onClick?: () => void;
   className?: string;
 }

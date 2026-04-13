@@ -1,6 +1,7 @@
 export interface Tutor {
   id: number;
   name: string;
+  cpf?: string;
   phone: string;
   email: string;
   address: string;
@@ -8,6 +9,7 @@ export interface Tutor {
   pets: string[];
   status: TutorStatus;
   createdAt: string;
+  photoUrl?: string;
 }
 
 export type TutorStatus = "ativo" | "inativo";

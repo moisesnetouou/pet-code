@@ -104,7 +104,11 @@ export default function AgendaPage() {
 
   return (
     <div className="min-h-screen bg-slate-50">
-      <Sidebar open={sidebarOpen} onToggle={setSidebarOpen} currentPath="/agenda" />
+      <Sidebar
+        open={sidebarOpen}
+        onToggle={setSidebarOpen}
+        currentPath="/agenda"
+      />
       <div
         className={`transition-all duration-300 ${sidebarOpen ? "ml-64" : "ml-16"}`}
       >

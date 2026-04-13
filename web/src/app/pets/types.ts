@@ -9,10 +9,13 @@ export interface Pet {
   color: string;
   tutor: string;
   tutorPhone: string;
+  birthDate?: string;
+  gender?: string;
   lastVisit?: string;
   nextVisit?: string;
   status: PetStatus;
   notes?: string;
+  photoUrl?: string;
 }
 
 export type PetType =

@@ -1,21 +1,26 @@
 "use client";
 
+import { Suspense, useMemo, useState, useEffect } from "react";
+import { useSearchParams } from "next/navigation";
 import { PawPrint, Plus } from "lucide-react";
-import { useMemo, useState } from "react";
 import { Button } from "@/components/base";
 import { cn } from "@/lib/utils";
 import { Header } from "../dashboard/components/header";
 import { Sidebar } from "../dashboard/components/sidebar";
 import { greeting } from "../dashboard/utils/greeting";
 import { tutors as tutorData } from "../tutors/data";
+import { pets as petData } from "./data";
 import { Filters } from "./components/filters";
 import { PetDialog } from "./components/pet-dialog";
 import { PetsGrid } from "./components/pets-grid";
+import { TutorDialog } from "../tutors/components/tutor-dialog";
 import { pets as initialPets } from "./data";
 import type { FilterOptions, Pet } from "./types";
+import type { Tutor } from "../tutors/types";
 
-export default function PetsPage() {
+function PetsPageContent() {
   const [sidebarOpen, setSidebarOpen] = useState(true);
+  const searchParams = useSearchParams();
   const [filters, setFilters] = useState<FilterOptions>({
     search: "",
     type: "all",
@@ -25,9 +30,22 @@ export default function PetsPage() {
   const [pets, setPets] = useState(initialPets);
   const [selectedPet, setSelectedPet] = useState<Pet | null>(null);
   const [dialogOpen, setDialogOpen] = useState(false);
+  const [tutorDialogOpen, setTutorDialogOpen] = useState(false);
+
+  useEffect(() => {
+    if (searchParams.get("new") === "true") {
+      setSelectedPet(null);
+      setDialogOpen(true);
+    }
+  }, [searchParams]);
 
   const tutors = useMemo(
     () => tutorData.map((t) => ({ id: t.id, name: t.name })),
+    [],
+  );
+
+  const allPets = useMemo(
+    () => petData.map((p) => ({ id: p.id, name: p.name, type: p.type, emoji: p.emoji })),
     [],
   );
 
@@ -95,6 +113,16 @@ export default function PetsPage() {
     setPets(pets.filter((p) => p.id !== id));
   };
 
+  const handleSaveTutor = (tutorData: Omit<Tutor, "id" | "pets" | "createdAt">) => {
+    console.log("Novo tutor:", tutorData);
+    setTutorDialogOpen(false);
+  };
+
+  const handleInactivateTutor = (id: number) => {
+    console.log("Inativar tutor:", id);
+    setTutorDialogOpen(false);
+  };
+
   const handleSearch = (query: string) => {
     setFilters((prev) => ({ ...prev, search: query }));
   };
@@ -160,7 +188,25 @@ export default function PetsPage() {
         onSave={handleSavePet}
         onDelete={handleDeletePet}
         tutors={tutors}
+        onOpenTutorDialog={setTutorDialogOpen}
+      />
+
+      <TutorDialog
+        open={tutorDialogOpen}
+        onOpenChange={setTutorDialogOpen}
+        onSave={handleSaveTutor}
+        onInactivate={handleInactivateTutor}
+        allPets={allPets}
+        onOpenPetDialog={setDialogOpen}
       />
     </div>
+  );
+}
+
+export default function PetsPage() {
+  return (
+    <Suspense fallback={<div className="min-h-screen bg-slate-50" />}>
+      <PetsPageContent />
+    </Suspense>
   );
 }

@@ -4,15 +4,15 @@ import { Pencil, Plus, Stethoscope } from "lucide-react";
 import { useState } from "react";
 import { Avatar } from "@/components/base/avatar";
 import { Button } from "@/components/base/button";
-import { Input } from "@/components/base/input";
-import { Label } from "@/components/base/label";
-import { Switch } from "@/components/base/switch";
 import {
   Dialog,
   DialogContent,
   DialogHeader,
   DialogTitle,
 } from "@/components/base/dialog";
+import { Input } from "@/components/base/input";
+import { Label } from "@/components/base/label";
+import { Switch } from "@/components/base/switch";
 import { veterinariansStyles } from "./styles";
 import type { Veterinarian, VeterinariansProps } from "./types";
 
@@ -181,9 +181,7 @@ export function Veterinarians({
             <Button variant="outline" onClick={() => setShowEditDialog(false)}>
               Cancelar
             </Button>
-            <Button>
-              Salvar
-            </Button>
+            <Button>Salvar</Button>
           </div>
         </DialogContent>
       </Dialog>

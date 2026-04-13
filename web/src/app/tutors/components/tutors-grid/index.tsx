@@ -5,7 +5,7 @@ import { TutorCard } from "../tutor-card";
 import { tutorsGridStyles } from "./styles";
 import type { TutorsGridProps } from "./types";
 
-export function TutorsGrid({ tutors, onEdit }: TutorsGridProps) {
+export function TutorsGrid({ tutors }: TutorsGridProps) {
   const g = tutorsGridStyles();
 
   if (tutors.length === 0) {
@@ -23,7 +23,7 @@ export function TutorsGrid({ tutors, onEdit }: TutorsGridProps) {
   return (
     <div className={g.container()}>
       {tutors.map((tutor) => (
-        <TutorCard key={tutor.id} tutor={tutor} onClick={onEdit} />
+        <TutorCard key={tutor.id} tutor={tutor} />
       ))}
     </div>
   );

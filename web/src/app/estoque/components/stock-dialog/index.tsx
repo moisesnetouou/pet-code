@@ -2,9 +2,6 @@
 
 import { useState } from "react";
 import { Button } from "@/components/base/button";
-import { Input } from "@/components/base/input";
-import { Label } from "@/components/base/label";
-import { Select } from "@/components/base/select";
 import {
   Dialog,
   DialogContent,
@@ -12,6 +9,9 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/base/dialog";
+import { Input } from "@/components/base/input";
+import { Label } from "@/components/base/label";
+import { Select } from "@/components/base/select";
 import type { StockItem, StockType } from "../../types";
 import { stockTypeLabels } from "../../types";
 import { stockDialogStyles } from "./styles";
@@ -243,10 +243,7 @@ export function StockDialog({
           >
             Cancelar
           </Button>
-          <Button
-            type="button"
-            onClick={handleSubmit}
-          >
+          <Button type="button" onClick={handleSubmit}>
             Salvar
           </Button>
         </DialogFooter>

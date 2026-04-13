@@ -104,10 +104,12 @@ export function Preferences({
           <div className={p.card()}>
             <span className={p.cardLabel()}>Formato de data</span>
             <Select
-              options={Object.entries(dateFormatLabels).map(([value, label]) => ({
-                value,
-                label,
-              }))}
+              options={Object.entries(dateFormatLabels).map(
+                ([value, label]) => ({
+                  value,
+                  label,
+                }),
+              )}
               value={preferences.dateFormat}
               onChange={(value) =>
                 setPreferences((prev) => ({
@@ -120,10 +122,12 @@ export function Preferences({
           <div className={p.card()}>
             <span className={p.cardLabel()}>Formato de hora</span>
             <Select
-              options={Object.entries(timeFormatLabels).map(([value, label]) => ({
-                value,
-                label,
-              }))}
+              options={Object.entries(timeFormatLabels).map(
+                ([value, label]) => ({
+                  value,
+                  label,
+                }),
+              )}
               value={preferences.timeFormat}
               onChange={(value) =>
                 setPreferences((prev) => ({

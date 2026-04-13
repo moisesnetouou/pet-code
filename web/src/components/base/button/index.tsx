@@ -14,6 +14,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       children,
       fullWidth,
       type = "button",
+      disabled,
       ...props
     },
     ref,
@@ -24,6 +25,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       <button
         ref={ref}
         type={type}
+        disabled={disabled}
         className={cn(s.base(), fullWidth && "w-full", className)}
         {...props}
       >
