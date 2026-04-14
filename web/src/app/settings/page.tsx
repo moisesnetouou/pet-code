@@ -5,7 +5,7 @@ import { useState } from "react";
 import { cn } from "@/lib/utils";
 import { Header } from "../dashboard/components/header";
 import { Sidebar } from "../dashboard/components/sidebar";
-import { greeting } from "../dashboard/utils/greeting";
+import { greeting, formatDate } from "../dashboard/utils/greeting";
 import { About } from "./components/about";
 import { Preferences } from "./components/preferences";
 import { Users } from "./components/users";
@@ -35,7 +35,7 @@ export default function SettingsPage() {
         >
           <Header
             greeting={`${greeting()}, Admin! 👋`}
-            date="Terça-feira, 01 de Abril de 2026"
+            date={formatDate()}
           />
 
           <div className="p-8">

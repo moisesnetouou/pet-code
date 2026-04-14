@@ -10,7 +10,7 @@ import { Sidebar } from "./components/sidebar";
 import { StatsGrid } from "./components/stats-grid";
 import { Timeline } from "./components/timeline";
 import { WelcomeBanner } from "./components/welcome-banner";
-import { greeting } from "./utils/greeting";
+import { greeting, formatDate } from "./utils/greeting";
 import { pets as petData } from "../pets/data";
 import { tutors as tutorData } from "../tutors/data";
 import { PetDialog } from "../pets/components/pet-dialog";
@@ -80,7 +80,7 @@ export default function DashboardPage() {
         >
           <Header
             greeting={`${greeting()}, Admin! 👋`}
-            date="Terça-feira, 01 de Abril de 2026"
+            date={formatDate()}
           />
 
           <div className="p-8">

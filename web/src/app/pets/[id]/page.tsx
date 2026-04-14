@@ -81,8 +81,8 @@ function PetDetailClient({ initialPet }: { initialPet: Pet }) {
             </Link>
 
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-              <div className="lg:col-span-1">
-                <div className="sticky top-6">
+              <div className="lg:col-span-1 h-fit">
+                <div className="sticky top-6 z-10">
                   <PetDocumentCard pet={pet} />
                 </div>
               </div>

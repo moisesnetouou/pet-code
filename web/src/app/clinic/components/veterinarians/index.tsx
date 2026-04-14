@@ -1,12 +1,13 @@
 "use client";
 
-import { Pencil, Plus, Stethoscope } from "lucide-react";
+import { Pencil, Plus, Stethoscope, X } from "lucide-react";
 import { useState } from "react";
 import { Avatar } from "@/components/base/avatar";
 import { Button } from "@/components/base/button";
 import {
   Dialog,
   DialogContent,
+  DialogFooter,
   DialogHeader,
   DialogTitle,
 } from "@/components/base/dialog";
@@ -16,14 +17,32 @@ import { Switch } from "@/components/base/switch";
 import { veterinariansStyles } from "./styles";
 import type { Veterinarian, VeterinariansProps } from "./types";
 
+interface FormData {
+  name: string;
+  crmv: string;
+  specialties: string;
+  phone: string;
+  email: string;
+}
+
+const getInitialFormData = (): FormData => ({
+  name: "",
+  crmv: "",
+  specialties: "",
+  phone: "",
+  email: "",
+});
+
 export function Veterinarians({
   veterinarians: initialVeterinarians,
   onToggle,
 }: VeterinariansProps) {
   const v = veterinariansStyles();
   const [veterinarians, setVeterinarians] = useState(initialVeterinarians);
-  const [showEditDialog, setShowEditDialog] = useState(false);
-  const [selectedVet, setSelectedVet] = useState<Veterinarian | null>(null);
+  const [dialogOpen, setDialogOpen] = useState(false);
+  const [isEditMode, setIsEditMode] = useState(false);
+  const [selectedVetId, setSelectedVetId] = useState<number | null>(null);
+  const [formData, setFormData] = useState<FormData>(getInitialFormData());
 
   const handleToggle = (id: number) => {
     setVeterinarians((prev) =>
@@ -34,9 +53,49 @@ export function Veterinarians({
     onToggle?.(id);
   };
 
+  const handleAdd = () => {
+    setIsEditMode(false);
+    setSelectedVetId(null);
+    setFormData(getInitialFormData());
+    setDialogOpen(true);
+  };
+
   const handleEdit = (vet: Veterinarian) => {
-    setSelectedVet(vet);
-    setShowEditDialog(true);
+    setIsEditMode(true);
+    setSelectedVetId(vet.id);
+    setFormData({
+      name: vet.name,
+      crmv: vet.crmv,
+      specialties: vet.specialties.join(", "),
+      phone: vet.phone,
+      email: vet.email,
+    });
+    setDialogOpen(true);
+  };
+
+  const handleSave = () => {
+    const specialties = formData.specialties
+      .split(",")
+      .map((s) => s.trim())
+      .filter((s) => s);
+
+    if (isEditMode && selectedVetId) {
+      setVeterinarians((prev) =>
+        prev.map((vet) =>
+          vet.id === selectedVetId
+            ? { ...vet, name: formData.name, crmv: formData.crmv, specialties, phone: formData.phone, email: formData.email }
+            : vet,
+        ),
+      );
+    } else {
+      const newId = Math.max(...veterinarians.map((v) => v.id), 0) + 1;
+      setVeterinarians((prev) => [
+        ...prev,
+        { id: newId, name: formData.name, crmv: formData.crmv, specialties, phone: formData.phone, email: formData.email, isActive: true },
+      ]);
+    }
+    setDialogOpen(false);
+    setFormData(getInitialFormData());
   };
 
   const getInitials = (name: string) => {
@@ -44,8 +103,11 @@ export function Veterinarians({
       .split(" ")
       .map((n) => n[0])
       .join("")
-      .slice(0, 2);
+      .slice(0, 2)
+      .toUpperCase();
   };
+
+  const canSave = formData.name.trim() !== "" && formData.crmv.trim() !== "";
 
   return (
     <>
@@ -55,7 +117,7 @@ export function Veterinarians({
             <Stethoscope className={v.titleIcon()} />
             Veterinários
           </h3>
-          <button className={v.addButton()}>
+          <button className={v.addButton()} onClick={handleAdd}>
             <Plus className="w-4 h-4 mr-1.5 inline" />
             Adicionar
           </button>
@@ -65,11 +127,19 @@ export function Veterinarians({
           {veterinarians.map((vet) => (
             <div key={vet.id} className={v.vetCard()}>
               <div className={v.vetHeader()}>
-                <Avatar className={v.vetAvatar()}>
-                  <span className="bg-teal-100 text-teal-700 font-bold">
-                    {getInitials(vet.name)}
-                  </span>
-                </Avatar>
+                {vet.avatar ? (
+                  <img
+                    src={vet.avatar}
+                    alt={vet.name}
+                    className="w-12 h-12 rounded-full object-cover"
+                  />
+                ) : (
+                  <Avatar className={v.vetAvatar()}>
+                    <span className="bg-teal-100 text-teal-700 font-bold">
+                      {getInitials(vet.name)}
+                    </span>
+                  </Avatar>
+                )}
                 <div className={v.vetInfo()}>
                   <div className="flex items-center gap-2 w-full">
                     <h4 className={v.vetName()}>{vet.name}</h4>
@@ -118,71 +188,92 @@ export function Veterinarians({
         </div>
       </div>
 
-      <Dialog open={showEditDialog} onOpenChange={setShowEditDialog}>
+      <Dialog open={dialogOpen} onOpenChange={setDialogOpen}>
         <DialogContent className="max-w-md">
           <DialogHeader>
-            <DialogTitle>Editar Veterinário</DialogTitle>
+            <DialogTitle>
+              {isEditMode ? "Editar Veterinário" : "Novo Veterinário"}
+            </DialogTitle>
           </DialogHeader>
 
-          {selectedVet && (
-            <div className="space-y-4 mt-4">
+          <div className="space-y-4 mt-4">
+            <div className="space-y-2">
+              <Label className="text-sm font-medium text-slate-700">
+                Nome *
+              </Label>
+              <Input
+                value={formData.name}
+                onChange={(e) =>
+                  setFormData({ ...formData, name: e.target.value })
+                }
+                placeholder="Dr. Nome Sobrenome"
+                className="border-slate-200"
+              />
+            </div>
+            <div className="space-y-2">
+              <Label className="text-sm font-medium text-slate-700">
+                CRMV *
+              </Label>
+              <Input
+                value={formData.crmv}
+                onChange={(e) =>
+                  setFormData({ ...formData, crmv: e.target.value })
+                }
+                placeholder="CRM-SP 12345"
+                className="border-slate-200"
+              />
+            </div>
+            <div className="space-y-2">
+              <Label className="text-sm font-medium text-slate-700">
+                Especialidades
+              </Label>
+              <Input
+                value={formData.specialties}
+                onChange={(e) =>
+                  setFormData({ ...formData, specialties: e.target.value })
+                }
+                placeholder="Cirurgia, Vacinação..."
+                className="border-slate-200"
+              />
+            </div>
+            <div className="grid grid-cols-2 gap-4">
               <div className="space-y-2">
                 <Label className="text-sm font-medium text-slate-700">
-                  Nome
+                  Telefone
                 </Label>
                 <Input
-                  defaultValue={selectedVet.name}
+                  value={formData.phone}
+                  onChange={(e) =>
+                    setFormData({ ...formData, phone: e.target.value })
+                  }
+                  placeholder="(11) 99999-0000"
                   className="border-slate-200"
                 />
               </div>
               <div className="space-y-2">
                 <Label className="text-sm font-medium text-slate-700">
-                  CRMV
+                  Email
                 </Label>
                 <Input
-                  defaultValue={selectedVet.crmv}
+                  value={formData.email}
+                  onChange={(e) =>
+                    setFormData({ ...formData, email: e.target.value })
+                }
+                  placeholder="vet@clinic.com"
                   className="border-slate-200"
                 />
-              </div>
-              <div className="space-y-2">
-                <Label className="text-sm font-medium text-slate-700">
-                  Especialidades
-                </Label>
-                <Input
-                  defaultValue={selectedVet.specialties.join(", ")}
-                  className="border-slate-200"
-                  placeholder="Cirurgia, Vacinação..."
-                />
-              </div>
-              <div className="grid grid-cols-2 gap-4">
-                <div className="space-y-2">
-                  <Label className="text-sm font-medium text-slate-700">
-                    Telefone
-                  </Label>
-                  <Input
-                    defaultValue={selectedVet.phone}
-                    className="border-slate-200"
-                  />
-                </div>
-                <div className="space-y-2">
-                  <Label className="text-sm font-medium text-slate-700">
-                    Email
-                  </Label>
-                  <Input
-                    defaultValue={selectedVet.email}
-                    className="border-slate-200"
-                  />
-                </div>
               </div>
             </div>
-          )}
+          </div>
 
-          <div className="flex justify-end gap-3 mt-6">
-            <Button variant="outline" onClick={() => setShowEditDialog(false)}>
+          <DialogFooter>
+            <Button variant="outline" onClick={() => setDialogOpen(false)}>
               Cancelar
             </Button>
-            <Button>Salvar</Button>
-          </div>
+            <Button onClick={handleSave} disabled={!canSave}>
+              {isEditMode ? "Salvar" : "Adicionar"}
+            </Button>
+          </DialogFooter>
         </DialogContent>
       </Dialog>
     </>

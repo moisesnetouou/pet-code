@@ -5,7 +5,7 @@ import { useMemo, useState } from "react";
 import { Button } from "@/components/base/button";
 import { Header } from "../dashboard/components/header";
 import { Sidebar } from "../dashboard/components/sidebar";
-import { greeting } from "../dashboard/utils/greeting";
+import { greeting, formatDate } from "../dashboard/utils/greeting";
 import { Filters } from "./components/filters";
 import { StatsCards } from "./components/stats-cards";
 import { StockDialog } from "./components/stock-dialog";
@@ -130,7 +130,7 @@ export default function EstoquePage() {
       <div
         className={`transition-all duration-300 ${sidebarOpen ? "ml-64" : "ml-16"}`}
       >
-        <Header greeting={greeting()} />
+        <Header greeting={greeting()} date={formatDate()} />
         <main className="p-6">
           <div className="max-w-7xl mx-auto">
             {/* Page Header */}

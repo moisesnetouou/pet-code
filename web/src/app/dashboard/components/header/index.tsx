@@ -1,54 +1,31 @@
 "use client";
 
-import { Bell, CalendarPlus, Search, UserPlus } from "lucide-react";
-import { useState } from "react";
+import { CalendarPlus, UserPlus } from "lucide-react";
 import { Button } from "@/components/base/button";
-import { Input } from "@/components/base/input";
 import { cn } from "@/lib/utils";
 import { headerStyles } from "./styles";
 import type { HeaderProps } from "./types";
 
 export function Header({
   greeting = "Admin! 👋",
-  date = "Terça-feira, 01 de Abril de 2026",
-  notificationCount = 3,
-  showSearch = true,
+  date,
   action1Label,
   action2Label,
   onAction1,
   onAction2,
-  onSearch,
 }: HeaderProps) {
   const h = headerStyles();
-  const [searchValue, setSearchValue] = useState("");
-
-  const handleSearchChange = (value: string) => {
-    setSearchValue(value);
-    onSearch?.(value);
-  };
 
   return (
     <header className={h.container()}>
       <div className={h.greetingContainer()}>
         <div>
           <h1 className={h.greetingTitle()}>{greeting}</h1>
-          <p className={h.greetingDate()}>{date}</p>
+          {date && <p className={h.greetingDate()}>{date}</p>}
         </div>
       </div>
 
       <div className={h.actionsContainer()}>
-        {showSearch && (
-          <div className={h.searchContainer()}>
-            <Search className={h.searchIcon()} />
-            <Input
-              placeholder="Buscar pets, tutores..."
-              value={searchValue}
-              onChange={(e) => handleSearchChange(e.target.value)}
-              className={h.searchInput()}
-            />
-          </div>
-        )}
-
         {onAction1 && action1Label && (
           <Button
             variant="outline"
@@ -75,13 +52,6 @@ export function Header({
             <span className="hidden sm:inline">{action2Label}</span>
           </Button>
         )}
-
-        <Button variant="ghost" size="icon" className={h.notificationButton()}>
-          <Bell className="w-5 h-5" />
-          {notificationCount > 0 && (
-            <span className={h.notificationBadge()}></span>
-          )}
-        </Button>
       </div>
     </header>
   );

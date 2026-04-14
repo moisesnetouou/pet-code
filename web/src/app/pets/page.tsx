@@ -7,7 +7,7 @@ import { Button } from "@/components/base";
 import { cn } from "@/lib/utils";
 import { Header } from "../dashboard/components/header";
 import { Sidebar } from "../dashboard/components/sidebar";
-import { greeting } from "../dashboard/utils/greeting";
+import { greeting, formatDate } from "../dashboard/utils/greeting";
 import { tutors as tutorData } from "../tutors/data";
 import { pets as petData } from "./data";
 import { Filters } from "./components/filters";
@@ -144,10 +144,7 @@ function PetsPageContent() {
         >
           <Header
             greeting={`${greeting()}, Admin! 👋`}
-            date="Terça-feira, 01 de Abril de 2026"
-            action1Label="Novo Pet"
-            onAction1={handleNewPet}
-            onSearch={handleSearch}
+            date={formatDate()}
           />
 
           <div className="p-8">

@@ -3,7 +3,7 @@
 import { useMemo, useState } from "react";
 import { Header } from "../dashboard/components/header";
 import { Sidebar } from "../dashboard/components/sidebar";
-import { greeting } from "../dashboard/utils/greeting";
+import { greeting, formatDate } from "../dashboard/utils/greeting";
 import { pets as mockPets } from "../pets/data";
 import { CalendarGrid } from "./components/calendar-grid";
 import { CalendarHeader } from "./components/calendar-header";
@@ -114,8 +114,7 @@ export default function AgendaPage() {
       >
         <Header
           greeting={greeting()}
-          action2Label="Novo Agendamento"
-          onAction2={handleNewAppointment}
+          date={formatDate()}
         />
         <main className="p-6">
           <div className="bg-white rounded-xl border border-slate-200 p-6">

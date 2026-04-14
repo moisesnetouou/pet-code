@@ -35,6 +35,8 @@ export function PetsGrid({ pets, onEdit }: PetsGridProps) {
             status={pet.status}
             lastVisit={pet.lastVisit}
             emoji={pet.emoji}
+            type={pet.type}
+            photoUrl={pet.photoUrl}
           />
         </Link>
       ))}

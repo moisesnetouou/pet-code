@@ -5,7 +5,7 @@ import { useState } from "react";
 import { cn } from "@/lib/utils";
 import { Header } from "../dashboard/components/header";
 import { Sidebar } from "../dashboard/components/sidebar";
-import { greeting } from "../dashboard/utils/greeting";
+import { greeting, formatDate } from "../dashboard/utils/greeting";
 import { ClinicInfo } from "./components/clinic-info";
 import { Schedule } from "./components/schedule";
 import { Services } from "./components/services";
@@ -37,7 +37,7 @@ export default function ClinicPage() {
         >
           <Header
             greeting={`${greeting()}, Admin! 👋`}
-            date="Terça-feira, 01 de Abril de 2026"
+            date={formatDate()}
           />
 
           <div className="p-8">

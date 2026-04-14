@@ -6,7 +6,7 @@ import { Button } from "@/components/base/button";
 import { cn } from "@/lib/utils";
 import { Header } from "../dashboard/components/header";
 import { Sidebar } from "../dashboard/components/sidebar";
-import { greeting } from "../dashboard/utils/greeting";
+import { greeting, formatDate } from "../dashboard/utils/greeting";
 import { PetDialog } from "../pets/components/pet-dialog";
 import { Filters } from "./components/filters";
 import { TutorDialog } from "./components/tutor-dialog";
@@ -131,10 +131,7 @@ export default function TutorsPage() {
         >
           <Header
             greeting={`${greeting()}, Admin! 👋`}
-            date="Terça-feira, 01 de Abril de 2026"
-            action1Label="Novo Tutor"
-            onAction1={handleNewTutor}
-            onSearch={handleSearch}
+            date={formatDate()}
           />
 
           <div className="p-8">

@@ -154,6 +154,7 @@ export const veterinarians: Veterinarian[] = [
     phone: "(11) 99999-0001",
     email: "carlos@petcode.com.br",
     isActive: true,
+    avatar: "https://i.pravatar.cc/150?img=11",
   },
   {
     id: 2,
@@ -163,6 +164,7 @@ export const veterinarians: Veterinarian[] = [
     phone: "(11) 99999-0002",
     email: "ana@petcode.com.br",
     isActive: true,
+    avatar: "https://i.pravatar.cc/150?img=5",
   },
   {
     id: 3,
@@ -172,6 +174,7 @@ export const veterinarians: Veterinarian[] = [
     phone: "(11) 99999-0003",
     email: "pedro@petcode.com.br",
     isActive: true,
+    avatar: "https://i.pravatar.cc/150?img=3",
   },
   {
     id: 4,
@@ -181,5 +184,6 @@ export const veterinarians: Veterinarian[] = [
     phone: "(11) 99999-0004",
     email: "julia@petcode.com.br",
     isActive: false,
+    avatar: "https://i.pravatar.cc/150?img=9",
   },
 ];

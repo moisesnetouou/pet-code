@@ -6,7 +6,7 @@ import { Button } from "@/components/base/button";
 import { cn } from "@/lib/utils";
 import { Header } from "../dashboard/components/header";
 import { Sidebar } from "../dashboard/components/sidebar";
-import { greeting } from "../dashboard/utils/greeting";
+import { greeting, formatDate } from "../dashboard/utils/greeting";
 import { Filters } from "./components/filters";
 import { RecordDialog } from "./components/record-dialog";
 import { RecordsList } from "./components/records-list";
@@ -76,7 +76,7 @@ export default function RecordsPage() {
         >
           <Header
             greeting={`${greeting()}, Admin! 👋`}
-            date="Terça-feira, 01 de Abril de 2026"
+            date={formatDate()}
           />
 
           <div className="p-8">

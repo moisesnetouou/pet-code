@@ -11,6 +11,7 @@ export const tutors: Tutor[] = [
     pets: ["Cheems"],
     status: "ativo",
     createdAt: "15/01/2024",
+    photoUrl: "https://i.pravatar.cc/150?img=11",
   },
   {
     id: 2,
@@ -22,6 +23,7 @@ export const tutors: Tutor[] = [
     pets: ["Luna"],
     status: "ativo",
     createdAt: "20/02/2024",
+    photoUrl: "https://i.pravatar.cc/150?img=5",
   },
   {
     id: 3,
@@ -33,6 +35,7 @@ export const tutors: Tutor[] = [
     pets: ["Manuelita"],
     status: "ativo",
     createdAt: "10/03/2024",
+    photoUrl: "https://i.pravatar.cc/150?img=3",
   },
   {
     id: 4,
@@ -44,6 +47,7 @@ export const tutors: Tutor[] = [
     pets: ["Pirata"],
     status: "ativo",
     createdAt: "05/04/2024",
+    photoUrl: "https://i.pravatar.cc/150?img=9",
   },
   {
     id: 5,
@@ -55,6 +59,7 @@ export const tutors: Tutor[] = [
     pets: ["Rexy", "Florzinha"],
     status: "ativo",
     createdAt: "12/05/2024",
+    photoUrl: "https://i.pravatar.cc/150?img=8",
   },
   {
     id: 6,
@@ -66,6 +71,7 @@ export const tutors: Tutor[] = [
     pets: ["Nemo", "Poopy"],
     status: "ativo",
     createdAt: "18/06/2024",
+    photoUrl: "https://i.pravatar.cc/150?img=1",
   },
   {
     id: 7,
@@ -77,6 +83,7 @@ export const tutors: Tutor[] = [
     pets: ["Thor"],
     status: "ativo",
     createdAt: "22/07/2024",
+    photoUrl: "https://i.pravatar.cc/150?img=12",
   },
   {
     id: 8,
@@ -88,6 +95,7 @@ export const tutors: Tutor[] = [
     pets: ["Mia"],
     status: "ativo",
     createdAt: "01/08/2024",
+    photoUrl: "https://i.pravatar.cc/150?img=23",
   },
   {
     id: 9,
@@ -99,8 +107,9 @@ export const tutors: Tutor[] = [
     pets: ["Bilu"],
     status: "inativo",
     createdAt: "15/09/2024",
+    photoUrl: "https://i.pravatar.cc/150?img=53",
   },
-  {
+{
     id: 10,
     name: "Fernanda Lima",
     phone: "(11) 99999-0010",
@@ -110,6 +119,7 @@ export const tutors: Tutor[] = [
     pets: ["Sonia"],
     status: "ativo",
     createdAt: "20/10/2024",
+    photoUrl: "https://i.pravatar.cc/150?img=24",
   },
   {
     id: 11,
@@ -120,7 +130,8 @@ export const tutors: Tutor[] = [
     city: "São Paulo",
     pets: ["Jorge"],
     status: "ativo",
-    createdAt: "05/11/2024",
+    createdAt: "15/11/2024",
+    photoUrl: "https://i.pravatar.cc/150?img=17",
   },
   {
     id: 12,
@@ -132,6 +143,7 @@ export const tutors: Tutor[] = [
     pets: ["Bidu"],
     status: "ativo",
     createdAt: "12/12/2024",
+    photoUrl: "https://i.pravatar.cc/150?img=20",
   },
   {
     id: 13,
@@ -143,6 +155,7 @@ export const tutors: Tutor[] = [
     pets: ["Kika"],
     status: "ativo",
     createdAt: "08/01/2025",
+    photoUrl: "https://i.pravatar.cc/150?img=25",
   },
   {
     id: 14,
@@ -154,6 +167,7 @@ export const tutors: Tutor[] = [
     pets: ["Paçoca"],
     status: "inativo",
     createdAt: "15/02/2025",
+    photoUrl: "https://i.pravatar.cc/150?img=60",
   },
   {
     id: 15,
@@ -165,6 +179,7 @@ export const tutors: Tutor[] = [
     pets: ["Mel"],
     status: "ativo",
     createdAt: "20/03/2025",
+    photoUrl: "https://i.pravatar.cc/150?img=26",
   },
   {
     id: 16,
@@ -176,6 +191,7 @@ export const tutors: Tutor[] = [
     pets: ["Gold"],
     status: "ativo",
     createdAt: "01/04/2025",
+    photoUrl: "https://i.pravatar.cc/150?img=68",
   },
   {
     id: 17,
@@ -187,6 +203,7 @@ export const tutors: Tutor[] = [
     pets: ["Spike"],
     status: "ativo",
     createdAt: "10/05/2025",
+    photoUrl: "https://i.pravatar.cc/150?img=52",
   },
   {
     id: 18,
@@ -198,6 +215,7 @@ export const tutors: Tutor[] = [
     pets: ["Lilo"],
     status: "ativo",
     createdAt: "15/06/2025",
+    photoUrl: "https://i.pravatar.cc/150?img=44",
   },
 ];
 

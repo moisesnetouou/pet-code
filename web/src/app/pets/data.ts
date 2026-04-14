@@ -27,6 +27,7 @@ export const pets: Pet[] = [
     nextVisit: "15/06/2026",
     status: "ativo",
     notes: "Vacinas em dia",
+    photoUrl: "https://images.unsplash.com/photo-1552053831-71594a27632d?w=400&h=400&fit=crop",
   },
   {
     id: 2,
@@ -42,6 +43,7 @@ export const pets: Pet[] = [
     birthDate: "10/06/2024",
     lastVisit: "20/03/2026",
     status: "ativo",
+    photoUrl: "https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?w=400&h=400&fit=crop",
   },
   {
     id: 3,
@@ -72,6 +74,7 @@ export const pets: Pet[] = [
     birthDate: "20/05/2025",
     lastVisit: "25/03/2026",
     status: "ativo",
+    photoUrl: "https://images.unsplash.com/photo-1552728089-57bdde30beb3?w=400&h=400&fit=crop",
   },
   {
     id: 5,
@@ -87,6 +90,7 @@ export const pets: Pet[] = [
     birthDate: "08/02/2022",
     lastVisit: "05/03/2026",
     status: "ativo",
+    photoUrl: "https://images.unsplash.com/photo-1589941013453-ec89f33b5e95?w=400&h=400&fit=crop",
   },
   {
     id: 6,
@@ -116,6 +120,7 @@ export const pets: Pet[] = [
     birthDate: "22/11/2021",
     lastVisit: "18/03/2026",
     status: "ativo",
+    photoUrl: "https://images.unsplash.com/photo-1573865526739-10659fec78a5?w=400&h=400&fit=crop",
   },
   {
     id: 8,
@@ -131,6 +136,7 @@ export const pets: Pet[] = [
     birthDate: "03/04/2025",
     nextVisit: "10/04/2026",
     status: "ativo",
+    photoUrl: "https://images.unsplash.com/photo-1585110396000-c9ffd4e4b308?w=400&h=400&fit=crop",
   },
   {
     id: 9,
@@ -146,6 +152,7 @@ export const pets: Pet[] = [
     birthDate: "12/09/2024",
     lastVisit: "22/03/2026",
     status: "ativo",
+    photoUrl: "https://images.unsplash.com/photo-1591160690555-5debfba600fa?w=400&h=400&fit=crop",
   },
   {
     id: 10,
@@ -160,6 +167,7 @@ export const pets: Pet[] = [
     tutorPhone: "(11) 99999-0008",
     birthDate: "05/03/2023",
     status: "ativo",
+    photoUrl: "https://images.unsplash.com/photo-1592194996308-7b43878e84a6?w=400&h=400&fit=crop",
   },
   {
     id: 11,
@@ -203,6 +211,7 @@ export const pets: Pet[] = [
     tutorPhone: "(11) 99999-0011",
     birthDate: "30/01/2024",
     status: "ativo",
+    photoUrl: "https://images.unsplash.com/photo-1544923408-75c5cef46f14?w=400&h=400&fit=crop",
   },
   {
     id: 14,
@@ -218,6 +227,7 @@ export const pets: Pet[] = [
     birthDate: "18/10/2020",
     lastVisit: "01/03/2026",
     status: "ativo",
+    photoUrl: "https://images.unsplash.com/photo-1537151625747-768eb6cf92b2?w=400&h=400&fit=crop",
   },
   {
     id: 15,
